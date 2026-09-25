@@ -35,9 +35,9 @@ func _ready() -> void:
 				"column": n,
 				"can_plant": true
 			}
-		#play_intro()
-	inventoryChange("plant", 1)
-	$player/Camera2D.make_current()
+	play_intro()
+	#inventoryChange("plant", 1)
+	#$player/Camera2D.make_current()
 
 var txt = ''
 @onready var label = $UI/Panel/txt
