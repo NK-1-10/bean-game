@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://c43sg2qkvhhud"]
+
+[ext_resource type="Script" uid="uid://chvksavqdtwmx" path="res://main/trash.gd" id="1_r1s07"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uijpw"]
+size = Vector2(40, 40)
+
+[node name="trash" type="StaticBody2D" unique_id=310768896]
+script = ExtResource("1_r1s07")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=776515050]
+position = Vector2(20, 20)
+shape = SubResource("RectangleShape2D_uijpw")
+
+[node name="paper" type="ColorRect" parent="." unique_id=1954600480]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.27428353, 0.53709567, 0.57563126, 1)
+
+[node name="plastic" type="ColorRect" parent="." unique_id=1448910852]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.7524846, 0.6667072, 0.051013052, 1)
+
+[node name="metal" type="ColorRect" parent="." unique_id=758643117]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.82526606, 0.28750455, 0.27732986, 1)

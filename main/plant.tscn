@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://d05m5tcr1fvs4"]
+
+[ext_resource type="Texture2D" uid="uid://ckwnxbxol7wkc" path="res://icon.svg" id="1_lskei"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bouyv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_lskei")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lskei"]
+radius = 171.07309
+
+[node name="plant" type="Node2D" unique_id=352524241]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=990217796]
+sprite_frames = SubResource("SpriteFrames_bouyv")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=709644440]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=376946548]
+shape = SubResource("CircleShape2D_lskei")
