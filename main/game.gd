@@ -14,7 +14,7 @@ var selected = 0
 
 func _ready() -> void:
 	Signals.start_end.connect(_add_bean) ; Signals.bean_planted.connect(_planted_bean) ; Signals.phone.connect(_opened_phone) ; Signals.updateCoins.connect(update_coins)
-	$beanstock.position = Vector2(0,0) ; $UI/Phone.position = Vector2(1244, 136) ; Signals.pickUp.connect(inventoryChange)
+	$beanstock.position = Vector2(-1028,-700) ; $UI/Phone.position = Vector2(1244, 136) ; Signals.pickUp.connect(inventoryChange)
 	$UI/inventory/HBoxContainer/Panel/overlay.visible = false
 	$ColorRect/ColorRect.visible = false
 	$ColorRect/red.visible = false
