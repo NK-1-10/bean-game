@@ -13,6 +13,9 @@
 [ext_resource type="Texture2D" uid="uid://cjbf65bllxhsv" path="res://phone.png" id="7_j015t"]
 [ext_resource type="Script" uid="uid://dleg8msmmanh1" path="res://main/intro.gd" id="7_jc0vi"]
 [ext_resource type="PackedScene" uid="uid://d32q8727ctxtk" path="res://main/screen.tscn" id="11_hlcqn"]
+[ext_resource type="Script" uid="uid://d3ixmomuwbqty" path="res://main/spawn.gd" id="14_yyuar"]
+[ext_resource type="Texture2D" uid="uid://15p2o1pr5yeb" path="res://assets/Individual Icons/farm_19.png" id="15_0coyo"]
+[ext_resource type="Script" uid="uid://b0opm7nedr5ph" path="res://main/area_2d.gd" id="16_p6qvs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jc0vi"]
 texture = ExtResource("4_vfw6y")
@@ -8423,6 +8426,18 @@ size = Vector2(323.04126, 805.6094)
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7m14"]
 radius = 180.00278
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f7m14"]
+size = Vector2(181, 653.1875)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yyuar"]
+size = Vector2(314.25, 187)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0coyo"]
+size = Vector2(307.5, 157)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0coyo"]
+radius = 26.076809
+
 [node name="game" type="Node2D" unique_id=457392371]
 script = ExtResource("1_vfw6y")
 
@@ -8585,7 +8600,6 @@ scale_amount_max = 10.0
 color_initial_ramp = SubResource("Gradient_2fwfh")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=2097777653]
-visible = false
 
 [node name="inventory" type="Panel" parent="UI" unique_id=361318054]
 custom_minimum_size = Vector2(0, 60)
@@ -8733,8 +8747,43 @@ visible = false
 position = Vector2(553, -216)
 shape = SubResource("CircleShape2D_f7m14")
 
+[node name="spawn" type="Area2D" parent="." unique_id=1935874187]
+script = ExtResource("14_yyuar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn" unique_id=1271140112]
+position = Vector2(267, 238)
+shape = SubResource("RectangleShape2D_f7m14")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="spawn" unique_id=384418773]
+position = Vector2(783, 253.59375)
+shape = SubResource("RectangleShape2D_f7m14")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="spawn" unique_id=494978215]
+position = Vector2(524, 471)
+shape = SubResource("RectangleShape2D_yyuar")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="spawn" unique_id=995391783]
+position = Vector2(520.25, 49.5)
+shape = SubResource("RectangleShape2D_0coyo")
+
+[node name="Timer" type="Timer" parent="spawn" unique_id=541361085]
+wait_time = 6.0
+
+[node name="food" type="Sprite2D" parent="spawn" unique_id=325678617]
+position = Vector2(-608, -92)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("15_0coyo")
+
+[node name="Area2D" type="Area2D" parent="spawn/food" unique_id=39204881]
+script = ExtResource("16_p6qvs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="spawn/food/Area2D" unique_id=1041797551]
+shape = SubResource("CircleShape2D_0coyo")
+
 [connection signal="input_event" from="ColorRect/hiverGreen" to="ColorRect/hiverGreen" method="_on_input_event"]
 [connection signal="mouse_entered" from="ColorRect/hiverGreen" to="ColorRect/hiverGreen" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="ColorRect/hiverGreen" to="ColorRect/hiverGreen" method="_on_mouse_exited"]
 [connection signal="input_event" from="UI/Bag/Area2D" to="intro" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="UI/Phone/Area2D" to="screen" method="_on_area_2d_input_event"]
+[connection signal="timeout" from="spawn/Timer" to="spawn" method="_on_timer_timeout"]
+[connection signal="body_entered" from="spawn/food/Area2D" to="spawn/food/Area2D" method="_on_body_entered"]

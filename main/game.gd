@@ -35,10 +35,7 @@ func _ready() -> void:
 				"column": n,
 				"can_plant": true
 			}
-	#play_intro()
-	inventoryChange("plant", 1)
-	inventoryChange("water", 1)
-	inventoryChange("food", 1)
+	play_intro()
 	#inventoryChange("plant", 1)
 	#$player/Camera2D.make_current()
 
@@ -61,7 +58,7 @@ func _planted_bean():
 	await Global.typewriter(txt, label)
 	txt = "However, take note that your little bean trees will need your attention. They will need watering, feeding and sometimes some company."
 	await Global.typewriter(txt, label)
-	txt = "To get more beans to plant, collect the trash in the arrea and do some recycling. You'll be rewarded for that in coins. And with coins you can buy more beans on your phone!"
+	txt = "To get more beans to plant, you must defeat the bugs coming to eat your plants. For that you will get coins. And with coins you can buy more beans on your phone!"
 	await Global.typewriter(txt, label)
 	var tween = create_tween()
 	tween.tween_property($UI/Phone, "position", Vector2(1069, 136), 0.5)
@@ -111,22 +108,24 @@ func generate_inventory():
 		box.add_child(new_slot)
 	inventory.gui_input.connect(_on_slot_input.bind(1))
 
-func inventoryChange(what, amount): # ----------------------------------------------------------------------------------add to inventory "text" and the ammount
+ # ----------------------------------------------------------------------------------add to inventory "text" and the ammount
+func inventoryChange(what, amount):
 	if what not in Global.Collectables:
-		return
+		return false
 	# stack onto the same item if stackable
 	if Global.Collectables[what]["stackable"]:
 		for key in Global.inventory:
 			if Global.inventory[key]["name"] == what:
 				Global.inventory[key]["amount"] += amount
 				updateInvent(int(key))
-				return
+				return true
 	# otherwise first empty slot
 	for i in range(1, slots + 1):
 		if not Global.inventory.has(str(i)):
 			Global.inventory[str(i)] = {"name": what, "amount": amount}
 			updateInvent(i)
-			return
+			return true
+	return false  # no room
 
 func updateInvent(index):
 	var slot = inventory.get_parent().get_child(index - 1)

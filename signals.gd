@@ -7,3 +7,5 @@ signal phone()
 signal coins_change(ammount)
 signal updateCoins(text)
 signal pickUp(what, ammount)
+
+signal pickUpFood()
