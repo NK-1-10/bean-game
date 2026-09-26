@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+var coinScene = preload("res://all/coin.tscn")
 
 @export var speed: int = 100
 @export var maxSpeed: int = 300
@@ -16,12 +17,12 @@ signal damaged
 var onCooldown = false
 
 @export var allPlantContainer: Node2D
-@export var targetedPlant: Node2D
+var targetedPlant
 
 var newTimer = null
 
 func _ready() -> void:
-	# targetedPlant = await targetClosestPlant()
+	targetedPlant = await targetClosestPlant()
 	damaged.connect(takeDamage)
 	
 	if(jumpMovement):
@@ -71,7 +72,7 @@ func jumpMove():
 
 func _on_damage_area_area_entered(area: Area2D) -> void:
 	if area.get_parent().get_parent() == allPlantContainer:
-		#area.get_parent().damage.emit(damage)
+		area.get_parent().damage.emit(damage)
 		onCooldown = true
 		velocity = -global_position.direction_to(area.global_position) * speed / 2
 		if(newTimer is Timer): newTimer.stop()
@@ -82,6 +83,10 @@ func _on_damage_area_area_entered(area: Area2D) -> void:
 func takeDamage(amount):
 	health -= amount
 	if(health <= 0):
+		var newCoin = coinScene.instantiate()
+		newCoin.global_position = global_position
+		get_parent().add_child(newCoin)
+		
 		queue_free()
 	else:
 		onCooldown = true

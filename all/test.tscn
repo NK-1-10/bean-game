@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bu5hfrj6qg3s3" path="res://node_2d.gd" id="1_5rjqm"]
 [ext_resource type="PackedScene" uid="uid://cjl03p74dhwe0" path="res://all/enemy.tscn" id="2_4ytwg"]
+[ext_resource type="PackedScene" uid="uid://d05m5tcr1fvs4" path="res://main/plant.tscn" id="3_4ytwg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5rjqm"]
 
@@ -17,14 +18,14 @@ script = ExtResource("1_5rjqm")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Node2D/Area2D" unique_id=1746860051]
 shape = SubResource("RectangleShape2D_5rjqm")
 
-[node name="enemy" parent="." unique_id=1207086626 node_paths=PackedStringArray("allPlantContainer", "targetedPlant") instance=ExtResource("2_4ytwg")]
-position = Vector2(400, 200)
+[node name="enemy" parent="." unique_id=1207086626 node_paths=PackedStringArray("allPlantContainer") instance=ExtResource("2_4ytwg")]
+position = Vector2(584, 112)
 speed = 250
-maxSpeed = 300
 deceleration = 5
-jumpMovement = false
-movementDelay = 0.8
-damage = 1
-health = 5
-allPlantContainer = NodePath("../Node2D")
-targetedPlant = NodePath("../Node2D")
+movementDelay = 2.0
+allPlantContainer = NodePath("../allPlants")
+
+[node name="allPlants" type="Node2D" parent="." unique_id=527258186]
+
+[node name="plant" parent="allPlants" unique_id=352524241 instance=ExtResource("3_4ytwg")]
+position = Vector2(272, 248)

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cjl03p74dhwe0"]
 
 [ext_resource type="Script" uid="uid://b06kx32fas0pc" path="res://all/enemy.gd" id="1_e6ep3"]
-[ext_resource type="Texture2D" uid="uid://l3gna6xv3wp6" path="res://bugArt/roach.png" id="2_p6fxc"]
+[ext_resource type="Texture2D" uid="uid://cwcy1iouyb508" path="res://bugArt/roach-Sheet.png" id="2_p6fxc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_e6ep3"]
 size = Vector2(32, 32)
@@ -10,11 +10,13 @@ size = Vector2(32, 32)
 size = Vector2(32, 32)
 
 [node name="enemy" type="CharacterBody2D" unique_id=1207086626]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 264
+collision_mask = 264
 script = ExtResource("1_e6ep3")
 
 [node name="damageArea" type="Area2D" parent="." unique_id=1425267334]
+collision_layer = 257
+collision_mask = 257
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="damageArea" unique_id=1258501666]
 shape = SubResource("RectangleShape2D_e6ep3")
@@ -25,8 +27,8 @@ shape = SubResource("RectangleShape2D_bgusu")
 [node name="Timer" type="Timer" parent="." unique_id=1640626871]
 
 [node name="bugSprite" type="Sprite2D" parent="." unique_id=459699748]
-scale = Vector2(2, 2)
 texture = ExtResource("2_p6fxc")
+hframes = 2
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="." unique_id=616579639]
 emitting = false

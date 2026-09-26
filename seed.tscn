@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dsg4fv23fr0nn"]
 
-[ext_resource type="Script" uid="uid://iit3ouwdmuf" path="res://seed.gd" id="1_24r2x"]
+[ext_resource type="Script" path="res://seed.gd" id="1_24r2x"]
 [ext_resource type="Texture2D" uid="uid://hy6t7n4qsfo" path="res://assets/Individual Icons/farm_32.png" id="2_24r2x"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1cqr"]
@@ -9,6 +9,8 @@ height = 6.0
 
 [node name="seed" type="Area2D" unique_id=228146920]
 scale = Vector2(2, 2)
+collision_layer = 256
+collision_mask = 256
 script = ExtResource("1_24r2x")
 
 [node name="UniqueBrownSeedResemblingAnEggLocatedAgainstAPlainBackdropDuringDaylightPng" type="Sprite2D" parent="." unique_id=2145152971]

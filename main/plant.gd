@@ -1,5 +1,7 @@
 extends Node2D
 
+signal damage
+
 @onready var plant = $AnimatedSprite2D
 @onready var timer = $needs
 @onready var shoot = $shoot
@@ -9,6 +11,8 @@ var seed_scene = preload("res://seed.tscn")
 @onready var progress = $progress
 
 @export var hp = 50
+@export var seedDamage = 1
+@export var range = 50
 
 @export var first = 3
 @export var second =  1
@@ -26,6 +30,7 @@ var has_need = false
 var need = ''
 
 func _ready() -> void:
+	damage.connect(takeDamage)
 	$labels/e.visible = false
 	temp.visible = false
 	bar.visible = false
@@ -164,22 +169,25 @@ func _on_progress_timeout() -> void:
 	clickable = false
 
 func takeDamage(damage): #--------------------------------------------------------------------damage and death
+	print(damage)
 	if dead: return
-	hp = hp - damage
+	hp -= damage
 	if hp <= 0 :
 		timer.stop()
 		death()
 
 func death():
+	print("plant died")
 	plant.play_backwards("default")
 	plant.frame = cFrame
-	await plant.animation_finished
+	await plant.animation_looped
 	dead = true
 	queue_free()
 
 
 func _on_shoot_timeout() -> void:
 	var s = seed_scene.instantiate()
+	s.damage = seedDamage
 	get_parent().add_child(s)
 	s.global_position = global_position
 	s.direction = (get_global_mouse_position() - global_position).normalized()
