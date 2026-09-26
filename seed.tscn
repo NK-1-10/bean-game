@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dsg4fv23fr0nn"]
+
+[ext_resource type="Script" uid="uid://iit3ouwdmuf" path="res://seed.gd" id="1_24r2x"]
+[ext_resource type="Texture2D" uid="uid://c54f5qmecv40u" path="res://assets/unique-brown-seed-resembling-an-egg-located-against-a-plain-backdrop-during-daylight-png.png" id="1_a1cqr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a1cqr"]
+radius = 5.0
+height = 16.0
+
+[node name="seed" type="Area2D" unique_id=228146920]
+script = ExtResource("1_24r2x")
+
+[node name="UniqueBrownSeedResemblingAnEggLocatedAgainstAPlainBackdropDuringDaylightPng" type="Sprite2D" parent="." unique_id=2145152971]
+position = Vector2(-1.000001, -1.0000019)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_a1cqr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=346761106]
+shape = SubResource("CapsuleShape2D_a1cqr")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1012241234]
+rect = Rect2(-5, -8, 10, 16)
+
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]
