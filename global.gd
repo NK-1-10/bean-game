@@ -5,6 +5,7 @@ var slots_taken = 0
 var Current_slot = 0
 
 var coins = 4
+var beanstalk_spot = 4
 
 var rows = 5
 var columns = 8
@@ -43,8 +44,8 @@ func typewriter(string, label):
 	await get_tree().create_timer(timer).timeout
 	for n in range(s.length()):
 		if s[n] == "." or s[n] == "?" or s[n] == "!":
-			timer = 0.8
-		else: timer = 0.05
+			timer = 0.5
+		else: timer = 0.04
 		text = text + s[n]
 		label.text = text
 		await get_tree().create_timer(timer).timeout
@@ -55,38 +56,31 @@ var Collectables ={
 	"plant":{
 		"plantable" : true,
 		"stackable" : true,
-		"visual" : "res://assets/Individual Icons/farm_31.png" 
+		"visual" : "res://assets/bean.PNG",
+		"throwable" : false
 	},
 	"bean":{
 		"plantable" : true,
 		"stackable" : false,
-		"visual" : "res://bean.png"
-	},
-	"paper":{
-		"plantable" : false,
-		"stackable" : true,
-	},
-	"plastic":{
-		"plantable" : false,
-		"stackable" : true,
-	},
-	"metal":{
-		"plantable" : false,
-		"stackable" : true,
+		"visual" : "res://assets/beanstok.PNG",
+		"throwable" : false
 	},
 	"water":{
 		"plantable" : false,
 		"stackable" : false,
 		"visual": "res://assets/Individual Icons/farm_4.png",
+		"throwable" : false
 	},
 	"food":{
 		"plantable" : false,
 		"stackable" : false,
 		"visual": "res://assets/Individual Icons/farm_19.png",
+		"throwable" : true
 	},
 	"wateringcan":{
 		"plantable" : false,
 		"stackable" : false,
 		"visual": "res://assets/Individual Icons/farm_2.png",
+		"throwable" : false
 	},
 }

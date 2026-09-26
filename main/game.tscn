@@ -5,13 +5,13 @@
 [ext_resource type="Script" uid="uid://15aclau13clq" path="res://main/hiver_green.gd" id="3_46yon"]
 [ext_resource type="Texture2D" uid="uid://dcqxn34kp0u2t" path="res://asset - forgotten memories/Trees.png" id="3_f7m14"]
 [ext_resource type="Texture2D" uid="uid://d2pj0et036nq6" path="res://asset - forgotten memories/TileSet.png" id="4_vfw6y"]
-[ext_resource type="Texture2D" uid="uid://w4y73e14cov3" path="res://bag.png" id="5_2c7eb"]
 [ext_resource type="Texture2D" uid="uid://xy36vll0fetd" path="res://asset - forgotten memories/WaterTiles-6frames.png" id="5_f7m14"]
 [ext_resource type="PackedScene" uid="uid://d05m5tcr1fvs4" path="res://main/plant.tscn" id="5_vfw6y"]
 [ext_resource type="PackedScene" uid="uid://cdnyra4hx2uj0" path="res://main/beanstock.tscn" id="6_3qcir"]
-[ext_resource type="Texture2D" uid="uid://wwp74gkphbsd" path="res://bean.png" id="6_4u4fy"]
-[ext_resource type="Texture2D" uid="uid://cjbf65bllxhsv" path="res://phone.png" id="7_j015t"]
 [ext_resource type="Script" uid="uid://dleg8msmmanh1" path="res://main/intro.gd" id="7_jc0vi"]
+[ext_resource type="Texture2D" uid="uid://bxidwwmjv0k8a" path="res://assets/bag.PNG" id="7_p6qvs"]
+[ext_resource type="Texture2D" uid="uid://bn3wtat8w254m" path="res://assets/beanstok.PNG" id="8_p6qvs"]
+[ext_resource type="Texture2D" uid="uid://bddqeynicr4we" path="res://assets/phone.PNG" id="9_p6qvs"]
 [ext_resource type="PackedScene" uid="uid://d32q8727ctxtk" path="res://main/screen.tscn" id="11_hlcqn"]
 [ext_resource type="Script" uid="uid://d3ixmomuwbqty" path="res://main/spawn.gd" id="14_yyuar"]
 [ext_resource type="Texture2D" uid="uid://15p2o1pr5yeb" path="res://assets/Individual Icons/farm_19.png" id="15_0coyo"]
@@ -8421,10 +8421,10 @@ offsets = PackedFloat32Array(0, 0.49434155, 1)
 colors = PackedColorArray(0.8615319, 0.28325623, 0.23201782, 1, 0.18764096, 0.42749193, 0.11721871, 1, 0.73355186, 0.5464848, 0.11239209, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2c7eb"]
-radius = 279.96686
+radius = 39.338978
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j015t"]
-size = Vector2(323.04126, 805.6094)
+size = Vector2(47.00003, 100.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_f7m14"]
 radius = 180.00278
@@ -8733,8 +8733,8 @@ autowrap_mode = 3
 
 [node name="Bag" type="Sprite2D" parent="UI" unique_id=1465543943]
 position = Vector2(580, 850)
-scale = Vector2(0.27148438, 0.27148438)
-texture = ExtResource("5_2c7eb")
+scale = Vector2(3, 3)
+texture = ExtResource("7_p6qvs")
 
 [node name="Area2D" type="Area2D" parent="UI/Bag" unique_id=921998297]
 
@@ -8742,19 +8742,18 @@ texture = ExtResource("5_2c7eb")
 shape = SubResource("CircleShape2D_2c7eb")
 
 [node name="Bean" type="Sprite2D" parent="UI/Bag" unique_id=295972200]
-position = Vector2(6.484985e-05, 62.61873)
-scale = Vector2(0.40217185, 0.40217185)
-texture = ExtResource("6_4u4fy")
+position = Vector2(-1.9999962, 9.66666)
+texture = ExtResource("8_p6qvs")
 
 [node name="Phone" type="Sprite2D" parent="UI" unique_id=1384913347]
-position = Vector2(1069, 136)
-scale = Vector2(0.25074184, 0.25074184)
-texture = ExtResource("7_j015t")
+position = Vector2(1045, 162)
+scale = Vector2(3, 3)
+texture = ExtResource("9_p6qvs")
 
 [node name="Area2D" type="Area2D" parent="UI/Phone" unique_id=1383664638]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UI/Phone/Area2D" unique_id=1598306983]
-position = Vector2(1.9941406, -7.9762573)
+position = Vector2(-1, 12.25)
 shape = SubResource("RectangleShape2D_j015t")
 
 [node name="Coin" type="Label" parent="UI" unique_id=734622165]

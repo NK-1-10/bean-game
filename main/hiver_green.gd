@@ -33,7 +33,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			get_parent().get_node("ColorRect").visible = false
 			get_parent().get_node("red").visible = true
 			get_node("../../..").use_item(Global.Current_slot)
-		elif Global.inventory.has(slot) and Global.inventory[slot]["name"] == "bean" and Global.can_place_2x2(place.get_meta("id")):
+		elif Global.inventory.has(slot) and Global.inventory[slot]["name"] == "bean" and Global.can_place_2x2(place.get_meta("id")) and place.get_meta("id") == Global.beanstalk_spot:
 			var id = place.get_meta("id")
 			Global.block_2x2(id)
 			bean.visible = true

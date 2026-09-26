@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://d32q8727ctxtk"]
 
 [ext_resource type="Script" uid="uid://mi65mvdsirme" path="res://main/screen.gd" id="1_bdea5"]
-[ext_resource type="Texture2D" uid="uid://wwp74gkphbsd" path="res://bean.png" id="1_rrh7m"]
+[ext_resource type="Texture2D" uid="uid://bhq68087qcoa3" path="res://assets/bean.PNG" id="2_bdea5"]
 
 [node name="screen" type="CanvasLayer" unique_id=1729791209]
 script = ExtResource("1_bdea5")
@@ -42,9 +42,9 @@ custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
 
 [node name="Bean" type="Sprite2D" parent="Panel/VBoxContainer/Panel" unique_id=2057098064]
-position = Vector2(54, 111.00009)
-scale = Vector2(0.2727825, 0.2727825)
-texture = ExtResource("1_rrh7m")
+position = Vector2(60, 74)
+scale = Vector2(3, 3)
+texture = ExtResource("2_bdea5")
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/Panel" unique_id=1444316652]
 layout_mode = 0
