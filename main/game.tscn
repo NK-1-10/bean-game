@@ -8410,6 +8410,9 @@ height = 62.0
 radius = 15.928513
 height = 54.03125
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p6qvs"]
+size = Vector2(16.5, 47.746185)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ph3h8"]
 size = Vector2(16, 16)
 
@@ -8440,6 +8443,7 @@ radius = 26.076809
 
 [node name="game" type="Node2D" unique_id=457392371]
 script = ExtResource("1_vfw6y")
+slots = 4
 
 [node name="ground" type="TileMapLayer" parent="." unique_id=552661713]
 position = Vector2(-8, 38)
@@ -8541,6 +8545,47 @@ shape = SubResource("CapsuleShape2D_yyuar")
 position = Vector2(431, 350)
 rotation = 1.5708214
 shape = SubResource("CapsuleShape2D_yyuar")
+
+[node name="CollisionShape2D20" type="CollisionShape2D" parent="border" unique_id=818960912]
+position = Vector2(408.75, -151.75)
+shape = SubResource("RectangleShape2D_p6qvs")
+
+[node name="CollisionShape2D21" type="CollisionShape2D" parent="border" unique_id=1964328034]
+position = Vector2(440.00003, -120)
+rotation = 1.5866525
+shape = SubResource("RectangleShape2D_p6qvs")
+
+[node name="CollisionShape2D22" type="CollisionShape2D" parent="border" unique_id=320094698]
+position = Vector2(472.00003, -104)
+rotation = 1.5866525
+shape = SubResource("RectangleShape2D_p6qvs")
+
+[node name="CollisionShape2D23" type="CollisionShape2D" parent="border" unique_id=1556649699]
+position = Vector2(487.00003, -88)
+rotation = 1.5866525
+shape = SubResource("RectangleShape2D_p6qvs")
+
+[node name="CollisionShape2D24" type="CollisionShape2D" parent="border" unique_id=618862713]
+position = Vector2(535, -88)
+rotation = 1.5866525
+shape = SubResource("RectangleShape2D_p6qvs")
+
+[node name="CollisionShape2D25" type="CollisionShape2D" parent="border" unique_id=103400744]
+position = Vector2(567.99994, -72)
+rotation = -4.7071567
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_p6qvs")
+
+[node name="CollisionShape2D26" type="CollisionShape2D" parent="border" unique_id=1781231150]
+position = Vector2(600, -72)
+rotation = 1.5866525
+shape = SubResource("RectangleShape2D_p6qvs")
+
+[node name="CollisionShape2D27" type="CollisionShape2D" parent="border" unique_id=359776579]
+position = Vector2(632, -106)
+rotation = -3.137927
+scale = Vector2(0.99999994, 0.99999994)
+shape = SubResource("RectangleShape2D_p6qvs")
 
 [node name="ColorRect" type="ReferenceRect" parent="." unique_id=1506668313]
 offset_left = 401.0
@@ -8727,8 +8772,7 @@ position = Vector2(-1160, -642)
 [node name="plants" type="Node2D" parent="." unique_id=892623996]
 
 [node name="beanstock" parent="." unique_id=1277755266 instance=ExtResource("6_3qcir")]
-position = Vector2(-1028, -700)
-scale = Vector2(0.07, 0.07)
+position = Vector2(-1562, -853)
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1072531902]
 position = Vector2(521, 256)
@@ -8739,7 +8783,6 @@ zoom = Vector2(2.5, 2.5)
 script = ExtResource("7_jc0vi")
 
 [node name="screen" parent="." unique_id=736162866 instance=ExtResource("11_hlcqn")]
-visible = false
 
 [node name="water" type="Area2D" parent="." unique_id=2120995459]
 

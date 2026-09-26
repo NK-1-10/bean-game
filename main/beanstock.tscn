@@ -1,37 +1,40 @@
 [gd_scene format=3 uid="uid://cdnyra4hx2uj0"]
 
-[ext_resource type="Texture2D" uid="uid://ckwnxbxol7wkc" path="res://icon.svg" id="1_3th8f"]
+[ext_resource type="Texture2D" uid="uid://bxkrfs3tmb8cc" path="res://assets/bottom.PNG" id="1_3th8f"]
+[ext_resource type="Script" uid="uid://vt7ta8mb4jxs" path="res://main/beanstock.gd" id="1_u5gsp"]
+[ext_resource type="Texture2D" uid="uid://cbq531mmaqxdu" path="res://assets/top.PNG" id="2_k8txo"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_k8txo"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_3th8f")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3th8f"]
-size = Vector2(507, 507)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_u5gsp"]
+radius = 10.99864
+height = 47.962578
 
 [node name="beanstock" type="Node2D" unique_id=1277755266]
+script = ExtResource("1_u5gsp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=912099953]
-visible = false
-scale = Vector2(4, 4)
-sprite_frames = SubResource("SpriteFrames_k8txo")
+[node name="bottom" type="Sprite2D" parent="." unique_id=1340851710]
+texture = ExtResource("1_3th8f")
 
-[node name="bean" type="ColorRect" parent="." unique_id=1476380585]
-offset_left = -254.0
-offset_top = -256.0
-offset_right = 253.0
-offset_bottom = 252.0
-color = Color(0.3982793, 0.43481353, 0.177115, 1)
+[node name="middle" type="Node2D" parent="." unique_id=1251886276]
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=690386825]
+[node name="top" type="Sprite2D" parent="." unique_id=1366806884]
+position = Vector2(0, -32)
+texture = ExtResource("2_k8txo")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1112031107]
-position = Vector2(-0.5, -1.5)
-shape = SubResource("RectangleShape2D_3th8f")
+[node name="Button" type="Button" parent="." unique_id=408141117]
+offset_left = 43.0
+offset_top = -21.0
+offset_right = 81.0
+offset_bottom = 10.0
+text = "add"
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2123410170]
+position = Vector2(-2, -297)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1604829858]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=132389907]
+position = Vector2(-2.3841858e-07, 4.9999995)
+rotation = 1.5865387
+shape = SubResource("CapsuleShape2D_u5gsp")
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
