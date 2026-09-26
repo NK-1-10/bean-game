@@ -29,6 +29,8 @@ var clickable = false
 var has_need = false
 var need = ''
 
+var waterF = true ; var foodF = true; var attentionF = true
+
 func _ready() -> void:
 	damage.connect(takeDamage)
 	$labels/e.visible = false
@@ -100,12 +102,21 @@ func _need(what):
 	if what == "a":
 		temp.text = "Pay attention to me"
 		need = "attention"
+		if attentionF:
+			attentionF = false
+			Signals.first.emit("attention")
 	elif what == "f":
 		temp.text = "Feed me"
 		need = "food"
+		if attentionF:
+			foodF = false
+			Signals.first.emit("food")
 	elif what == "w":
 		temp.text = "Water me"
 		need = "water"
+		if attentionF:
+			waterF = false
+			Signals.first.emit("water")
 
 func fufillNeed(what):
 	if not has_need or what != need: return

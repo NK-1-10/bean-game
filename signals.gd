@@ -9,3 +9,5 @@ signal updateCoins(text)
 signal pickUp(what, ammount)
 
 signal pickUpFood()
+signal first(what)
+signal gameStart()

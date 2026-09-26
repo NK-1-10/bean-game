@@ -50,12 +50,13 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 			shake()
 
 func shake():
+	waiting = false
 	var tween = create_tween()
-	tween.tween_property(stash, "rotation_degrees", 25, 0.5).as_relative()
-	tween.tween_property(stash, "rotation_degrees", -40, 0.5).as_relative()
-	tween.tween_property(stash, "rotation_degrees", 40, 0.5).as_relative()
+	tween.tween_property(stash, "rotation_degrees", 25, 0.25).as_relative()
+	tween.tween_property(stash, "rotation_degrees", -40, 0.25).as_relative()
 	tween.tween_property(stash, "rotation_degrees", 0, 0.5)
 	await tween.finished
+	waiting = true
 	
 func emmit():
 	bean.visible = true

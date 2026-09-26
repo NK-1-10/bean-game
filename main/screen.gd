@@ -30,11 +30,11 @@ func _on_button_pressed() -> void:
 	tween.tween_property(panel, "position", off, 0.5)
 
 func _on_one_pressed() -> void:
-	if Global.coins >= 4:	
-		Coins.coin(-4)
+	if Global.coins >= 15:	
+		Coins.coin(-15)
 		Signals.pickUp.emit("plant", 1) # to add to inventory. script for this in "game.gd"
 	else:
-		warning(4) # how much is essentially needed. for how much tried to buy
+		warning(15) # how much is essentially needed. for how much tried to buy
 
 
 

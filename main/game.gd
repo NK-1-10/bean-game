@@ -44,12 +44,13 @@ var txt = ''
 
 func _add_bean():
 	inventoryChange("bean", 1)
+	inventoryChange("wateringcan", 1)
 	move('in')
 	txt = "the great bean fo an even greater Beanstock! Try selecting the bean and planting it somewhere on this lovely land."
 	await Global.typewriter(txt, label)
 
 func update_coins(txt):
-	$UI/Coin.text = txt
+	$UI/buttons/Coin.text = txt
 
 func _planted_bean():
 	txt = "Perfect! But if you want to reach the goose in the sky, then the beanstock must grow in size."
@@ -68,11 +69,18 @@ func _planted_bean():
 	move('out')
 	player.set_physics_process(true) 
 	$player/Camera2D.make_current()
+	Signals.gameStart.emit()
 
 func _opened_phone():
 	txt = "Great. Thankfully you have just enough coins to buy one bean! This is your start. keep going tho! In no time you will reach the end."
 	await Global.typewriter(txt, label)
-	
+
+func refresh_grid():
+	var item = Global.held_item()
+	for sq in $squares.get_children():
+		sq.get_node("ColorRect").visible = false
+		sq.get_node("red").visible = not Global.can_place(sq.get_meta("id"), item)
+
 @onready var pan = $UI/Panel
 var startPanel = Vector2(-241, 174)
 var endPanel = Vector2(57, 174)
@@ -175,6 +183,7 @@ func select_slot(index):
 	Global.Current_slot = selected
 	if is_it_plant(index):
 		$squares.visible = true
+		refresh_grid()
 	else: $squares.visible = false
 
 func _unhandled_input(event: InputEvent) -> void:
