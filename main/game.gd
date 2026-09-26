@@ -35,7 +35,10 @@ func _ready() -> void:
 				"column": n,
 				"can_plant": true
 			}
-	play_intro()
+	#play_intro()
+	inventoryChange("plant", 1)
+	inventoryChange("water", 1)
+	inventoryChange("food", 1)
 	#inventoryChange("plant", 1)
 	#$player/Camera2D.make_current()
 

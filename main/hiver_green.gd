@@ -28,6 +28,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			var id = place.get_meta("id")
 			Global.block_around(id)
 			plants_holder.add_child(new_plant)
+			new_plant.get_node("needs").start()
 			new_plant.global_position = place.global_position + place.size / 2
 			get_parent().get_node("ColorRect").visible = false
 			get_parent().get_node("red").visible = true

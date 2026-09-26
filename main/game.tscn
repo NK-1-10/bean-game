@@ -5892,7 +5892,7 @@ offset_bottom = 49.0
 text = "Coins : 4"
 
 [node name="plant" parent="." unique_id=352524241 instance=ExtResource("5_vfw6y")]
-position = Vector2(408, 197)
+position = Vector2(409, 20)
 
 [node name="squares" type="Node2D" parent="." unique_id=1854402732]
 

@@ -42,17 +42,19 @@ frame = 3
 shape = SubResource("CircleShape2D_lskei")
 
 [node name="needs" type="Timer" parent="." unique_id=1220866644]
-wait_time = 10.0
+wait_time = 4.0
 
 [node name="shoot" type="Timer" parent="." unique_id=1504829979]
 wait_time = 4.0
 
 [node name="Label" type="Label" parent="." unique_id=2062924363]
-offset_left = -21.0
-offset_top = -40.0
-offset_right = 20.0
-offset_bottom = -17.0
+offset_left = -36.0
+offset_top = -38.0
+offset_right = 36.0
+offset_bottom = -26.0
+theme_override_font_sizes/font_size = 8
 text = "plant"
+horizontal_alignment = 1
 
 [node name="lvl up" type="Button" parent="." unique_id=1849418608]
 offset_left = -30.0
@@ -63,7 +65,63 @@ offset_bottom = 4.0
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2104846410]
 zoom = Vector2(4, 4)
 
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=2063739109]
+offset_left = -18.0
+offset_top = -25.0
+offset_right = 17.0
+offset_bottom = -21.0
+max_value = 60.0
+show_percentage = false
+
+[node name="progress" type="Timer" parent="." unique_id=1327831305]
+wait_time = 60.0
+
+[node name="buttons" type="Node2D" parent="." unique_id=1108906472]
+position = Vector2(9, 0)
+
+[node name="w" type="Button" parent="buttons" unique_id=1783554731]
+offset_left = 28.0
+offset_top = -35.0
+offset_right = 64.0
+offset_bottom = -13.0
+theme_override_font_sizes/font_size = 10
+text = "water"
+
+[node name="f" type="Button" parent="buttons" unique_id=1994396713]
+offset_left = 28.0
+offset_top = -11.0
+offset_right = 64.0
+offset_bottom = 11.0
+theme_override_font_sizes/font_size = 10
+text = "food"
+
+[node name="a" type="Button" parent="buttons" unique_id=1157475048]
+offset_left = 28.0
+offset_top = 14.0
+offset_right = 82.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 10
+text = "attention"
+
+[node name="labels" type="Node2D" parent="." unique_id=1910037192]
+
+[node name="e" type="Label" parent="labels" unique_id=598811303]
+offset_left = -22.0
+offset_top = -15.0
+offset_right = 21.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 8
+text = "press e to
+interract"
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="input_event" from="Area2D" to="." method="_on_area_2d_input_event"]
 [connection signal="timeout" from="needs" to="." method="_on_needs_timeout"]
 [connection signal="timeout" from="shoot" to="." method="_on_shoot_timeout"]
 [connection signal="pressed" from="lvl up" to="." method="_on_lvl_up_pressed"]
+[connection signal="timeout" from="progress" to="." method="_on_progress_timeout"]
+[connection signal="pressed" from="buttons/w" to="." method="_on_w_pressed"]
+[connection signal="pressed" from="buttons/f" to="." method="_on_f_pressed"]
+[connection signal="pressed" from="buttons/a" to="." method="_on_a_pressed"]

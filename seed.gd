@@ -1,7 +1,7 @@
 extends Area2D
 
 var direction = Vector2.RIGHT
-@export var speed = 400
+@export var speed = 200
 @export var damage = 10
 
 # Called when the node enters the scene tree for the first time.

@@ -55,7 +55,7 @@ var Collectables ={
 	"plant":{
 		"plantable" : true,
 		"stackable" : true,
-		"visual" : "res://icon.svg" #will have to change to pupa
+		"visual" : "res://assets/Individual Icons/farm_31.png" 
 	},
 	"bean":{
 		"plantable" : true,
@@ -73,5 +73,20 @@ var Collectables ={
 	"metal":{
 		"plantable" : false,
 		"stackable" : true,
-	}
+	},
+	"water":{
+		"plantable" : false,
+		"stackable" : false,
+		"visual": "res://assets/Individual Icons/farm_4.png",
+	},
+	"food":{
+		"plantable" : false,
+		"stackable" : false,
+		"visual": "res://assets/Individual Icons/farm_19.png",
+	},
+	"wateringcan":{
+		"plantable" : false,
+		"stackable" : false,
+		"visual": "res://assets/Individual Icons/farm_2.png",
+	},
 }
