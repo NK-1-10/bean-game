@@ -5,8 +5,12 @@ const SPEED = 150.0
 
 var facing := "side"
 
+func free() -> void:
+	Signals.selected.connect(picked)
+
 func _physics_process(delta: float) -> void:
 	var direction := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
+	
 
 	if direction:
 		if abs(direction.x) >= abs(direction.y):
@@ -30,3 +34,13 @@ func _physics_process(delta: float) -> void:
 		velocity = velocity.move_toward(Vector2.ZERO, SPEED)
 
 	move_and_slide()
+
+
+var character
+func picked(who):
+	var options =[
+		"Maid", "Pumpkin", "Elf", "Frog"
+	]
+	for i in options.size():
+		if who == options[i]:
+			character = options[i]

@@ -13,6 +13,7 @@ var offset = 16*2
 var selected = 0
 
 func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Signals.start_end.connect(_add_bean) ; Signals.bean_planted.connect(_planted_bean) ; Signals.phone.connect(_opened_phone) ; Signals.updateCoins.connect(update_coins)
 	$beanstock.position = Vector2(-1028,-700) ; $UI/Phone.position = Vector2(1244, 136) ; Signals.pickUp.connect(inventoryChange)
 	$UI/inventory/HBoxContainer/Panel/overlay.visible = false
