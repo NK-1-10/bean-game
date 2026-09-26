@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://j5plvbmh1rls"]
+
+[ext_resource type="Script" uid="uid://bu5hfrj6qg3s3" path="res://node_2d.gd" id="1_5rjqm"]
+[ext_resource type="PackedScene" uid="uid://cjl03p74dhwe0" path="res://all/enemy.tscn" id="2_4ytwg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5rjqm"]
+
+[node name="Test" type="Node2D" unique_id=1622124310]
+
+[node name="Node2D" type="Node2D" parent="." unique_id=804802923]
+script = ExtResource("1_5rjqm")
+
+[node name="Node2D" type="Node2D" parent="Node2D" unique_id=1765439300]
+
+[node name="Area2D" type="Area2D" parent="Node2D/Node2D" unique_id=969185252]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Node2D/Area2D" unique_id=1746860051]
+shape = SubResource("RectangleShape2D_5rjqm")
+
+[node name="enemy" parent="." unique_id=1207086626 node_paths=PackedStringArray("allPlantContainer", "targetedPlant") instance=ExtResource("2_4ytwg")]
+position = Vector2(400, 200)
+speed = 250
+deceleration = 5
+movementDelay = 0.8
+allPlantContainer = NodePath("../Node2D")
+targetedPlant = NodePath("../Node2D")
