@@ -86,6 +86,7 @@ func _planted_bean():
 	player.set_physics_process(true) 
 	$player/Camera2D.make_current()
 	Signals.gameStart.emit()
+	$check.start()
 
 func _opened_phone():
 	txt = "Great. Thankfully you have just enough coins to buy one bean! This is your start. keep going tho! In no time you will reach the end."
@@ -282,3 +283,25 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 	else:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
+
+
+var lost = false
+var plant_price = 4
+
+func check_lose():
+	if lost: return
+	for p in $plants.get_children():
+		if not p.dead: return                 # a plant is alive
+	for key in Global.inventory:
+		var item = Global.inventory[key]["name"]
+		if Global.Collectables[item]["plantable"]: return   # can still plant
+	if get_tree().get_nodes_in_group("coins").size() > 0: return  # coins to pick up
+	if Global.coins >= plant_price: return    # can still buy
+	lost = true
+	lose()
+
+func lose():
+	Fade.change_scene("res://main.tscn")
+
+func _on_check_timeout() -> void:
+	check_lose()
