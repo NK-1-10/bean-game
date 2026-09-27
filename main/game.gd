@@ -66,6 +66,7 @@ func _planted_bean():
 	await Global.typewriter(txt, label)
 	txt = "To get more beans to plant, you must defeat the bugs coming to eat your plants. For that you will get coins. And with coins you can buy more beans on your phone!"
 	await Global.typewriter(txt, label)
+	$sounds/appear.play()
 	var tween = create_tween()
 	tween.tween_property($UI/Phone, "position", Vector2(1069, 136), 0.5)
 	await tween.finished
@@ -89,12 +90,15 @@ func refresh_grid():
 @onready var pan = $UI/Panel
 var startPanel = Vector2(-241, 174)
 var endPanel = Vector2(57, 174)
+
 func move(w):
 	var tween = create_tween()
 	if w == "in":
+		$sounds/open.play()
 		tween.tween_property(pan, "position", endPanel, 1)
 	else:
 		tween.tween_property(pan, "position", startPanel, 1)
+		$sounds/close.play()
 	await tween.finished
 
 
@@ -176,6 +180,7 @@ func inventoryChange(what, amount):
 func updateInvent(index):
 	var slot = inventory.get_parent().get_child(index - 1)
 	var key = str(index)
+	$sounds/pending.play()
 	if Global.inventory.has(key):
 		var item = Global.inventory[key]["name"]
 		slot.get_node("TextureRect").texture = load(Global.Collectables[item]["visual"])
@@ -231,6 +236,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		select_slot(2)
 	elif event.is_action_pressed("3"):
 		select_slot(3)
+	elif event.is_action_pressed("4"):
+		select_slot(4)
 	elif event.is_action_pressed("clear"):
 		select_slot(0)
 

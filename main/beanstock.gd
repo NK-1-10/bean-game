@@ -9,6 +9,7 @@ var middles = [
 	preload("res://assets/middle3.PNG"),
 	preload("res://assets/middle4.PNG"),
 ]
+
 var ammount
 @export var needed = 40
 

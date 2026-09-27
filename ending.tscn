@@ -1,3 +1,63 @@
 [gd_scene format=3 uid="uid://5xclpx15a55t"]
 
+[ext_resource type="Script" uid="uid://bujarmtemffkl" path="res://ending.gd" id="1_fsb5k"]
+[ext_resource type="AudioStream" uid="uid://yj73sem27yv5" path="res://music/one.mp3" id="2_dmh3q"]
+
+[sub_resource type="Gradient" id="Gradient_fsb5k"]
+colors = PackedColorArray(0.22352941, 0.3372549, 0.45882353, 1, 0.8117647, 0.7607843, 0.8156863, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_dmh3q"]
+gradient = SubResource("Gradient_fsb5k")
+
 [node name="ending" type="CanvasLayer" unique_id=2071195229]
+script = ExtResource("1_fsb5k")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=635627774]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1151.8134
+offset_top = 2.2022381e-05
+offset_right = 647.8063
+offset_bottom = 503.80347
+grow_horizontal = 2
+grow_vertical = 2
+rotation = 1.5707964
+texture = SubResource("GradientTexture2D_dmh3q")
+
+[node name="middle" type="Node2D" parent="." unique_id=550539421]
+
+[node name="Timer" type="Timer" parent="." unique_id=332030020]
+autostart = true
+
+[node name="Label" type="Label" parent="." unique_id=1413262538]
+offset_left = 75.0
+offset_top = 50.0
+offset_right = 293.0
+offset_bottom = 264.0
+theme_override_font_sizes/font_size = 60
+text = "Made by
+Niko__O_0
+Duc_k"
+
+[node name="Label" type="Label" parent="Label" unique_id=1977573979]
+layout_mode = 0
+offset_left = 784.0
+offset_top = 125.0
+offset_right = 1002.0
+offset_bottom = 339.0
+theme_override_font_sizes/font_size = 60
+text = "Assets
+Forgotten memories by Immunity
+Characters by punpkin585
+Pixel fantacy icons by Caz
+Pixel parchement font by denizengames
+Cute and cozy ui sfx by Case Portman Audio"
+
+[node name="background" type="AudioStreamPlayer2D" parent="." unique_id=521515912]
+stream = ExtResource("2_dmh3q")
+autoplay = true
+bus = &"music"
+parameters/looping = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -4,6 +4,7 @@ var Squares = {}
 var slots_taken = 0
 var Current_slot = 0
 
+
 var coins = 15
 var beanstalk_spot = 4
 var character = ""

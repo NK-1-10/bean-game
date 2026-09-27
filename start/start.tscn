@@ -7,6 +7,10 @@
 [ext_resource type="Script" uid="uid://clgxjl46qs5c6" path="res://start/highlight.gd" id="6_hqiu3"]
 [ext_resource type="Gradient" uid="uid://bx7ccfm0k00vg" path="res://gradients/basic.tres" id="6_masxb"]
 [ext_resource type="Shader" uid="uid://chpihmymwogrb" path="res://start/start.gdshader" id="7_masxb"]
+[ext_resource type="AudioStream" uid="uid://yj73sem27yv5" path="res://music/one.mp3" id="8_ebhx0"]
+[ext_resource type="AudioStream" uid="uid://3lwb371m2rja" path="res://music/Sounds/Success.wav" id="9_3ssna"]
+[ext_resource type="AudioStream" uid="uid://bq0ma2sp4lkgs" path="res://music/Sounds/Confirm.wav" id="10_wx30y"]
+[ext_resource type="AudioStream" uid="uid://unbfii4mjdl" path="res://music/Sounds/Clicked_In.wav" id="11_wx30y"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3ssna"]
 atlas = ExtResource("2_275hl")
@@ -472,7 +476,7 @@ anchors_preset = 9
 anchor_bottom = 1.0
 offset_right = 1.0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 70
 text = "Selected:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -487,7 +491,7 @@ anchor_bottom = 1.0
 offset_left = -46.0
 grow_horizontal = 0
 grow_vertical = 2
-theme_override_font_sizes/font_size = 40
+theme_override_font_sizes/font_size = 70
 text = "Start
 "
 
@@ -524,10 +528,24 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.5019608, 0.5176471, 0.28627452, 1)
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=836133844]
-offset_right = 40.0
-offset_bottom = 40.0
-color = Color(0.34901962, 0.43529412, 0.6862745, 1)
+[node name="sound" type="Node2D" parent="." unique_id=1135957715]
+
+[node name="background" type="AudioStreamPlayer2D" parent="sound" unique_id=308113931]
+stream = ExtResource("8_ebhx0")
+autoplay = true
+bus = &"music"
+
+[node name="selected" type="AudioStreamPlayer2D" parent="sound" unique_id=1860561598]
+stream = ExtResource("9_3ssna")
+bus = &"sfx"
+
+[node name="pending" type="AudioStreamPlayer2D" parent="sound" unique_id=2086840582]
+stream = ExtResource("10_wx30y")
+bus = &"sfx"
+
+[node name="tick" type="AudioStreamPlayer2D" parent="sound" unique_id=1491805316]
+stream = ExtResource("11_wx30y")
+bus = &"sfx"
 
 [connection signal="input_event" from="HBoxContainer/maid/maid/maid" to="highlight" method="_on_input_event"]
 [connection signal="mouse_entered" from="HBoxContainer/maid/maid/maid" to="highlight" method="_on_maid_mouse_entered"]

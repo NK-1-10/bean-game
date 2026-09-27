@@ -23,6 +23,13 @@
 [ext_resource type="Script" uid="uid://bwky6ldggclk7" path="res://main/variableContainer.gd" id="16_kpj3s"]
 [ext_resource type="Script" uid="uid://b0opm7nedr5ph" path="res://main/area_2d.gd" id="16_p6qvs"]
 [ext_resource type="PackedScene" uid="uid://b42xkyprhmfid" path="res://all/enemy_spawner.tscn" id="23_6gqxg"]
+[ext_resource type="AudioStream" uid="uid://yj73sem27yv5" path="res://music/one.mp3" id="24_d2f2p"]
+[ext_resource type="AudioStream" uid="uid://3lwb371m2rja" path="res://music/Sounds/Success.wav" id="25_ygnxu"]
+[ext_resource type="AudioStream" uid="uid://bq0ma2sp4lkgs" path="res://music/Sounds/Confirm.wav" id="26_dfc64"]
+[ext_resource type="AudioStream" uid="uid://unbfii4mjdl" path="res://music/Sounds/Clicked_In.wav" id="27_811gj"]
+[ext_resource type="AudioStream" uid="uid://pe7n41gr0hss" path="res://music/Sounds/Clicked_Out.wav" id="28_ygnxu"]
+[ext_resource type="AudioStream" uid="uid://dxuf3r1sc5yhw" path="res://music/Sounds/Dialogue_Blip.wav" id="29_811gj"]
+[ext_resource type="AudioStream" uid="uid://di5hb133n2mls" path="res://music/Sounds/Menu_Open.wav" id="30_811gj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jc0vi"]
 texture = ExtResource("4_vfw6y")
@@ -8883,6 +8890,50 @@ shape = SubResource("CircleShape2D_0coyo")
 position = Vector2(521, 256)
 distFromCenter = 400
 plantsContainer = NodePath("../plants")
+
+[node name="sounds" type="Node2D" parent="." unique_id=1995624870]
+
+[node name="background" type="AudioStreamPlayer2D" parent="sounds" unique_id=42137417]
+stream = ExtResource("24_d2f2p")
+autoplay = true
+bus = &"music"
+parameters/looping = true
+
+[node name="selected" type="AudioStreamPlayer2D" parent="sounds" unique_id=2060238172]
+stream = ExtResource("25_ygnxu")
+bus = &"sfx"
+
+[node name="pending" type="AudioStreamPlayer2D" parent="sounds" unique_id=2078909681]
+stream = ExtResource("26_dfc64")
+bus = &"sfx"
+
+[node name="tick" type="AudioStreamPlayer2D" parent="sounds" unique_id=1878493375]
+stream = ExtResource("27_811gj")
+bus = &"sfx"
+
+[node name="settingsin" type="AudioStreamPlayer2D" parent="sounds" unique_id=1221082245]
+stream = ExtResource("27_811gj")
+bus = &"sfx"
+
+[node name="settingsout" type="AudioStreamPlayer2D" parent="sounds" unique_id=1055589588]
+stream = ExtResource("28_ygnxu")
+bus = &"sfx"
+
+[node name="talk" type="AudioStreamPlayer2D" parent="sounds" unique_id=859906457]
+stream = ExtResource("29_811gj")
+bus = &"sfx"
+
+[node name="open" type="AudioStreamPlayer2D" parent="sounds" unique_id=627619091]
+stream = ExtResource("27_811gj")
+bus = &"sfx"
+
+[node name="close" type="AudioStreamPlayer2D" parent="sounds" unique_id=286003464]
+stream = ExtResource("28_ygnxu")
+bus = &"sfx"
+
+[node name="appear" type="AudioStreamPlayer2D" parent="sounds" unique_id=734339916]
+stream = ExtResource("30_811gj")
+bus = &"sfx"
 
 [connection signal="input_event" from="ColorRect/hiverGreen" to="ColorRect/hiverGreen" method="_on_input_event"]
 [connection signal="mouse_entered" from="ColorRect/hiverGreen" to="ColorRect/hiverGreen" method="_on_mouse_entered"]

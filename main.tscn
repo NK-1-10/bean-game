@@ -1,9 +1,12 @@
 [gd_scene format=3 uid="uid://bqxsrcslbp0do"]
 
 [ext_resource type="Script" uid="uid://d0mm8sv4flq7k" path="res://main.gd" id="1_ig7tw"]
+[ext_resource type="Texture2D" uid="uid://bwrkrvfy45smw" path="res://assets/frog.PNG" id="2_0xm2m"]
+[ext_resource type="AudioStream" uid="uid://unbfii4mjdl" path="res://music/Sounds/Clicked_In.wav" id="3_h2yge"]
+[ext_resource type="AudioStream" uid="uid://yj73sem27yv5" path="res://music/one.mp3" id="4_1bvp3"]
 
 [sub_resource type="Gradient" id="Gradient_7dm0k"]
-colors = PackedColorArray(0.58431375, 0.6862745, 0.41960785, 1, 0.58431375, 0.6862745, 0.41960785, 0)
+colors = PackedColorArray(0.95630926, 0.80556935, 0.44257063, 1, 0.58431375, 0.6862745, 0.41960785, 0)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_ig7tw"]
 gradient = SubResource("Gradient_7dm0k")
@@ -11,30 +14,40 @@ gradient = SubResource("Gradient_7dm0k")
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 border_width_top = 1
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.85882354, 0.41960785, 0.32156864, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
-bg_color = Color(0.24717897, 0.3264432, 0.18835184, 0.39215687)
+bg_color = Color(0.972549, 0.84705883, 0.5529412, 0.39215687)
 border_width_top = 1
-border_color = Color(0, 0, 0, 1)
+border_color = Color(0.85882354, 0.41960785, 0.32156864, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0xm2m"]
+bg_color = Color(0.9372549, 0.7882353, 0.44313726, 0.39215687)
 
 [node name="main" type="CanvasLayer" unique_id=729372908]
 script = ExtResource("1_ig7tw")
+
+[node name="Frog" type="Sprite2D" parent="." unique_id=1624778658]
+position = Vector2(576, 324)
+scale = Vector2(3, 3)
+texture = ExtResource("2_0xm2m")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=2083735633]
 custom_minimum_size = Vector2(0, 300)
 anchors_preset = 9
 anchor_bottom = 1.0
-offset_right = 458.0
+offset_right = 538.0
 grow_vertical = 2
 texture = SubResource("GradientTexture1D_ig7tw")
 
-[node name="Label" type="Label" parent="." unique_id=1909927716]
+[node name="name" type="Label" parent="." unique_id=1909927716]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 60.0
-offset_bottom = -25.0
+offset_left = 3.0
+offset_top = 16.0
+offset_right = 3.0
+offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 130
@@ -42,23 +55,59 @@ text = "Game name"
 horizontal_alignment = 1
 
 [node name="start" type="Button" parent="." unique_id=2091753234]
-offset_left = 55.0
-offset_top = 228.0
-offset_right = 316.0
-offset_bottom = 283.0
+offset_left = 159.0
+offset_top = 361.0
+offset_right = 420.0
+offset_bottom = 416.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ig7tw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7dm0k")
 text = "Start game"
 
 [node name="settings" type="Button" parent="." unique_id=1907363650]
-offset_left = 55.0
-offset_top = 298.0
-offset_right = 316.0
-offset_bottom = 353.0
+offset_left = 159.0
+offset_top = 417.0
+offset_right = 420.0
+offset_bottom = 472.0
 theme_override_font_sizes/font_size = 50
 theme_override_styles/normal = SubResource("StyleBoxFlat_ig7tw")
 theme_override_styles/hover = SubResource("StyleBoxFlat_7dm0k")
 text = "Settings"
 
+[node name="Panel" type="Panel" parent="." unique_id=1132451898]
+custom_minimum_size = Vector2(100, 100)
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_right = 577.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_0xm2m")
+
+[node name="settings" type="Label" parent="Panel" unique_id=694975213]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 96.0
+offset_bottom = 172.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 100
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tick" type="AudioStreamPlayer2D" parent="." unique_id=100396611]
+stream = ExtResource("3_h2yge")
+bus = &"sfx"
+
+[node name="background" type="AudioStreamPlayer2D" parent="." unique_id=190792086]
+stream = ExtResource("4_1bvp3")
+autoplay = true
+bus = &"music"
+parameters/looping = true
+
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="settings" to="." method="_on_settings_pressed"]

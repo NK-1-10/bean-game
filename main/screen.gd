@@ -16,31 +16,34 @@ func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) 
 func move():
 	var tween = create_tween()
 	if open:
+		$sounds/close.play()
 		tween.tween_property(panel, "position", off, 0.5)
 		open = false
 		if first: 
 			Signals.phone.emit()
 			first = false
 	else:
+		$sounds/open.play()
 		tween.tween_property(panel, "position", on, 0.5)
 		open = true
 
 func _on_button_pressed() -> void:
+	$sounds/close.play()
 	var tween = create_tween()
 	tween.tween_property(panel, "position", off, 0.5)
 
 func _on_one_pressed() -> void:
 	if Global.coins >= 15:	
 		Coins.coin(-15)
+		$"sounds/coin subtract".play()
 		Signals.pickUp.emit("plant", 1) # to add to inventory. script for this in "game.gd"
 	else:
 		warning(15) # how much is essentially needed. for how much tried to buy
 
 
-
-
 func warning(tried):
 	var need = tried - Global.coins
+	$sounds/warn.play()
 	
 	$warning.text = "You dont have enough. you need " + str(need) + " more."
 	$warning.visible = true

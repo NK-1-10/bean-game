@@ -112,11 +112,12 @@ func down():
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		if selected:
-			if can_move: up(current)
+			if can_move: up(current) ; $"../sound/pending".play()
 			else: can_move = true
 
 func _on_start_pressed() -> void:
 	can_move = false
+	$"../sound/selected".play()
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	var sprite ; var one; var two ; var three
 	var four; var five ; var six

@@ -17,12 +17,15 @@ var settingsOpen = false ; var waterOpen = false; var foodOpen = false; var atte
 func _on_settings_pressed() -> void:
 	if settingsOpen:
 		move('out')
+		$"../sounds/settingsout".play()
 	else:
 		move('in')
 		label.text = "SETTINGS"
 		water.disabled = true; food.disabled = true; attention.disabled = true
+		$"../sounds/settingsin".play()
 		
 func _on_water_pressed() -> void:
+	$"../sounds/tick".play()
 	if settingsOpen:
 		move('out')
 	else:
@@ -32,6 +35,7 @@ func _on_water_pressed() -> void:
 
 
 func _on_food_pressed() -> void:
+	$"../sounds/tick".play()
 	if settingsOpen:
 		move('out')
 	else:
@@ -41,6 +45,7 @@ func _on_food_pressed() -> void:
 
 
 func _on_attention_pressed() -> void:
+	$"../sounds/tick".play()
 	if settingsOpen:
 		move('out')
 	else:
