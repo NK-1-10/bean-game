@@ -6,7 +6,7 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnarl"]
 radius = 16.0
 
-[node name="coin" type="Area2D" unique_id=1544539443]
+[node name="coin" type="Area2D" unique_id=1544539443 groups=["coin"]]
 scale = Vector2(0.5, 0.5)
 collision_layer = 257
 collision_mask = 257
