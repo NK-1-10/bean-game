@@ -2,6 +2,18 @@ extends Node2D
 
 var enemyScene = preload("res://all/enemy.tscn")
 @export var enemyVals = [1, 3, 3, 5]
+@export var enemyStats = [[200, 0.8, 1, 5, "res://bugArt/roach-Sheet.png"],
+[220, 1.2, 3, 7, "res://bugArt/caterpilar-Sheet.png"],
+[200, 0.7, 8, 5, "res://bugArt/spider-Sheet.png"],
+[160, 1.0, 3, 15, "res://bugArt/beetke-Sheet.png"]]
+
+@export var speed: int = 100
+@export var maxSpeed: int = 300
+@export var deceleration: int = 10
+@export var jumpMovement: bool = false
+@export var movementDelay: float = 0.5
+@export var damage: int = 1
+@export var health: int = 5
 
 @export var roundWeight = 3
 @export var roundExponentialism = 5
@@ -59,5 +71,11 @@ func spawnEnemy(val):
 		randY = randi_range(distFromCenter * 0.75, distFromCenter)
 	newEnemy.global_position = global_position + Vector2(randX, randY)
 	newEnemy.allPlantContainer = plantsContainer
+	newEnemy.speed = enemyStats[val][0]
+	newEnemy.movementDelay = enemyStats[val][1]
+	newEnemy.damage = enemyStats[val][2]
+	newEnemy.health = enemyStats[val][3]
+	newEnemy.get_child(3).texture = load(enemyStats[val][4])
+	
 	add_child(newEnemy)
 	newEnemy.tree_exited.connect(checkRemainingEnemies)

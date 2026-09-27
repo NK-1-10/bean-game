@@ -13,6 +13,7 @@ size = Vector2(32, 32)
 collision_layer = 264
 collision_mask = 264
 script = ExtResource("1_e6ep3")
+jumpMovement = true
 
 [node name="damageArea" type="Area2D" parent="." unique_id=1425267334]
 collision_layer = 257
@@ -35,4 +36,9 @@ emitting = false
 one_shot = true
 explosiveness = 1.0
 
+[node name="Timer2" type="Timer" parent="." unique_id=1543885958]
+wait_time = 3.0
+autostart = true
+
 [connection signal="area_entered" from="damageArea" to="." method="_on_damage_area_area_entered"]
+[connection signal="timeout" from="Timer2" to="." method="_on_timer_2_timeout"]

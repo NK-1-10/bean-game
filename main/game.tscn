@@ -16,9 +16,10 @@
 [ext_resource type="PackedScene" uid="uid://4ulji6qkiuaq" path="res://all/coin.tscn" id="10_514y6"]
 [ext_resource type="PackedScene" uid="uid://d32q8727ctxtk" path="res://main/screen.tscn" id="11_hlcqn"]
 [ext_resource type="Script" uid="uid://kwihgw0jjmkn" path="res://main/water.gd" id="14_bc3cr"]
-[ext_resource type="Script" uid="uid://d3ixmomuwbqty" path="res://main/spawn.gd" id="14_yyuar"]
+[ext_resource type="Script" path="res://main/spawn.gd" id="14_yyuar"]
 [ext_resource type="Texture2D" uid="uid://15p2o1pr5yeb" path="res://assets/Individual Icons/farm_19.png" id="15_0coyo"]
 [ext_resource type="Script" uid="uid://b0opm7nedr5ph" path="res://main/area_2d.gd" id="16_p6qvs"]
+[ext_resource type="Script" uid="uid://bwky6ldggclk7" path="res://main/variableContainer.gd" id="16_kpj3s"]
 [ext_resource type="PackedScene" uid="uid://b42xkyprhmfid" path="res://all/enemy_spawner.tscn" id="23_6gqxg"]
 [ext_resource type="AudioStream" uid="uid://yj73sem27yv5" path="res://music/one.mp3" id="24_d2f2p"]
 [ext_resource type="AudioStream" uid="uid://3lwb371m2rja" path="res://music/Sounds/Success.wav" id="25_ygnxu"]
@@ -8919,48 +8920,37 @@ plantsContainer = NodePath("../plants")
 [node name="background" type="AudioStreamPlayer2D" parent="sounds" unique_id=42137417]
 stream = ExtResource("24_d2f2p")
 autoplay = true
-bus = &"music"
 parameters/looping = true
 
 [node name="selected" type="AudioStreamPlayer2D" parent="sounds" unique_id=2060238172]
 stream = ExtResource("25_ygnxu")
-bus = &"sfx"
 
 [node name="pending" type="AudioStreamPlayer2D" parent="sounds" unique_id=2078909681]
 stream = ExtResource("26_dfc64")
-bus = &"sfx"
 
 [node name="tick" type="AudioStreamPlayer2D" parent="sounds" unique_id=1878493375]
 stream = ExtResource("27_811gj")
-bus = &"sfx"
 
 [node name="settingsin" type="AudioStreamPlayer2D" parent="sounds" unique_id=1221082245]
 stream = ExtResource("27_811gj")
-bus = &"sfx"
 
 [node name="settingsout" type="AudioStreamPlayer2D" parent="sounds" unique_id=1055589588]
 stream = ExtResource("28_ygnxu")
-bus = &"sfx"
 
 [node name="talk" type="AudioStreamPlayer2D" parent="sounds" unique_id=859906457]
 stream = ExtResource("29_811gj")
-bus = &"sfx"
 
 [node name="open" type="AudioStreamPlayer2D" parent="sounds" unique_id=627619091]
 stream = ExtResource("27_811gj")
-bus = &"sfx"
 
 [node name="close" type="AudioStreamPlayer2D" parent="sounds" unique_id=286003464]
 stream = ExtResource("28_ygnxu")
-bus = &"sfx"
 
 [node name="appear" type="AudioStreamPlayer2D" parent="sounds" unique_id=734339916]
 stream = ExtResource("30_811gj")
-bus = &"sfx"
 
 [node name="coin add" type="AudioStreamPlayer2D" parent="sounds" unique_id=285372753]
 stream = ExtResource("29_dfc64")
-bus = &"sfx"
 
 [node name="check" type="Timer" parent="." unique_id=2087934555]
 

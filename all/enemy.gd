@@ -32,9 +32,14 @@ func _ready() -> void:
 		newTimer.connect("timeout", jumpMove)
 		newTimer.start()
 
+var choosingPlant = false
+
 func targetClosestPlant() -> Node2D:
 	var chosenPlant = null
 	var distance = 9999999999
+	
+	choosingPlant = true
+	
 	
 	while chosenPlant is not Node2D:
 		for child: Node2D in allPlantContainer.get_children():
@@ -46,7 +51,7 @@ func targetClosestPlant() -> Node2D:
 		if chosenPlant is not Node2D:
 			await get_tree().create_timer(3).timeout
 	
-	print(chosenPlant)
+	choosingPlant = false
 	return chosenPlant
 
 func _physics_process(delta: float) -> void:
@@ -95,3 +100,8 @@ func takeDamage(amount):
 		if(!onCooldown):
 			await get_tree().create_timer(0.1).timeout
 			onCooldown = false
+
+
+func _on_timer_2_timeout() -> void:
+	if targetedPlant == null and choosingPlant == false:
+		targetClosestPlant()
