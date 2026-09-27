@@ -19,10 +19,11 @@ var selected = 0
 
 var character = "Elf"
 func _ready() -> void:
-	music.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("music")))
-	sfx.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("sfx")))
-	window.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
-	t.button_pressed = not Global.skip
+	Global.reset()
+	music.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("music"))))
+	sfx.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("sfx"))))
+	window.set_pressed_no_signal(DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	t.set_pressed_no_signal(Global.skip)
 	if Global.character != "":
 		character = Global.character
 	print(Global.character)
@@ -95,9 +96,9 @@ func _opened_phone():
 func refresh_grid():
 	var item = Global.held_item()
 	for sq in $squares.get_children():
-		sq.get_node("ColorRect").visible = false
-		sq.get_node("red").visible = not Global.can_place(sq.get_meta("id"), item)
-
+		var ok = Global.can_place(sq.get_meta("id"), item)
+		sq.get_node("red").visible = not ok
+		sq.get_node("ColorRect").visible = ok and sq.get_node("hiverGreen").hovered
 @onready var pan = $UI/Panel
 var startPanel = Vector2(-241, 174)
 var endPanel = Vector2(57, 174)
@@ -196,8 +197,11 @@ func updateInvent(index):
 	if Global.inventory.has(key):
 		var item = Global.inventory[key]["name"]
 		slot.get_node("TextureRect").texture = load(Global.Collectables[item]["visual"])
+		var amount = Global.inventory[key]["amount"]
+		slot.get_node("amount").text = str(amount) if amount > 1 else ""
 	else:
 		slot.get_node("TextureRect").texture = null
+		slot.get_node("amount").text = ""
 
 func use_item(index):
 	var key = str(index)
@@ -286,7 +290,7 @@ func _on_fullscreen_toggled(toggled_on: bool) -> void:
 
 
 var lost = false
-var plant_price = 4
+var plant_price = 15
 
 func check_lose():
 	if lost: return
@@ -305,3 +309,14 @@ func lose():
 
 func _on_check_timeout() -> void:
 	check_lose()
+	
+func rebuild_blocks():
+	print("rebuild, plants: ", $plants.get_child_count())
+	for id in Global.Squares:
+		Global.Squares[id]["can_plant"] = true
+	if Global.beanstalk_planted:
+		Global.block_2x2(Global.beanstalk_spot)
+	for p in $plants.get_children():
+		if p.has_meta("id") and not p.dead:
+			Global.block_around(p.get_meta("id"))
+	get_tree().current_scene.refresh_grid()

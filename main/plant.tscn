@@ -52,7 +52,7 @@ shape = SubResource("CircleShape2D_lskei")
 wait_time = 4.0
 
 [node name="shoot" type="Timer" parent="." unique_id=1504829979]
-wait_time = 4.0
+wait_time = 4.5
 
 [node name="Label" type="Label" parent="." unique_id=2062924363]
 z_index = 3
@@ -82,7 +82,7 @@ max_value = 60.0
 show_percentage = false
 
 [node name="progress" type="Timer" parent="." unique_id=1327831305]
-wait_time = 60.0
+wait_time = 35.0
 
 [node name="buttons" type="Node2D" parent="." unique_id=1108906472]
 visible = false
@@ -168,13 +168,14 @@ bus = &"sfx"
 stream = ExtResource("12_74mai")
 bus = &"sfx"
 
-[node name="Label2" type="Label" parent="." unique_id=1682551716]
+[node name="merge" type="Label" parent="." unique_id=1682551716]
+z_index = 3
 offset_left = -28.0
 offset_top = 3.0
 offset_right = 34.0
 offset_bottom = 26.0
 theme_override_colors/font_color = Color(0.9253918, 0.91592395, 7.70092e-07, 1)
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 12
 text = "click to fuse"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

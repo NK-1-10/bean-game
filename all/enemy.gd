@@ -104,4 +104,4 @@ func takeDamage(amount):
 
 func _on_timer_2_timeout() -> void:
 	if targetedPlant == null and choosingPlant == false:
-		targetClosestPlant()
+		targetedPlant = await targetClosestPlant()

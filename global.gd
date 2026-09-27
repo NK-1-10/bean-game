@@ -4,7 +4,7 @@ var Squares = {}
 var slots_taken = 0
 var Current_slot = 0
 
-var skip = true
+var skip = false
 
 var coins = 15
 var beanstalk_spot = 4
@@ -12,6 +12,10 @@ var character = ""
 
 var rows = 5
 var columns = 8
+
+var beanstalk_planted = false
+
+
 
 func block_around(id, radius = 1):
 	var row = Squares[id]["row"]
@@ -76,6 +80,14 @@ func typewriter(string, label):
 
 var inventory = {}
 
+func reset():
+	coins = 15
+	Squares = {}
+	inventory = {}
+	beanstalk_planted = false
+	Current_slot = 0
+	slots_taken = 0
+
 var Collectables ={
 	"plant":{
 		"plantable" : true,
@@ -97,7 +109,7 @@ var Collectables ={
 	},
 	"food":{
 		"plantable" : false,
-		"stackable" : false,
+		"stackable" : true,
 		"visual": "res://assets/Individual Icons/farm_19.png",
 		"throwable" : true
 	},

@@ -11,7 +11,7 @@ var middles = [
 ]
 
 var ammount
-@export var needed = 40
+@export var needed = 10
 
 var stack = 0  
 var offset = -32

@@ -51,7 +51,7 @@ offset_bottom = -69.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 130
-text = "Game name"
+text = "$ Bean Root $"
 horizontal_alignment = 1
 
 [node name="start" type="Button" parent="." unique_id=2091753234]

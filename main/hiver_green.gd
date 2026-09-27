@@ -6,13 +6,16 @@ extends Area2D
 @onready var bean = $"../../../beanstock"
 
 var offset_half = 16
+var hovered = false
 
 func _on_mouse_entered() -> void:
+	hovered = true
 	if not place.has_meta("id"): return
 	if Global.can_place(place.get_meta("id"), Global.held_item()):
 		get_parent().get_node("ColorRect").visible = true
 
 func _on_mouse_exited() -> void:
+	hovered = false
 	get_parent().get_node("ColorRect").visible = false
 
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
@@ -26,12 +29,14 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 			var new_plant = plant.duplicate()
 			Global.block_around(id)
 			plants_holder.add_child(new_plant)
+			new_plant.set_meta("id", id)
 			new_plant.get_node("needs").start()
 			new_plant.global_position = place.global_position + place.size / 2
 			get_node("../../..").use_item(Global.Current_slot)
 			get_node("../../..").refresh_grid()
 		elif item == "bean":
 			Global.block_2x2(id)
+			Global.beanstalk_planted = true
 			bean.visible = true
 			bean.global_position = place.global_position + Vector2(offset_half, offset_half) + place.size / 2
 			get_node("../../..").use_item(Global.Current_slot)

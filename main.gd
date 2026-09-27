@@ -7,10 +7,10 @@ var open = false
 
 func _ready() -> void:
 	panel.position = end
-	music.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("music")))
-	sfx.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("sfx")))
-	window.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
-	txt.button_pressed = not Global.skip
+	music.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("music"))))
+	sfx.set_value_no_signal(db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("sfx"))))
+	window.set_pressed_no_signal(DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN)
+	txt.set_pressed_no_signal(Global.skip)
 
 func _on_start_pressed() -> void:
 	Fade.change_scene("res://start/start.tscn")

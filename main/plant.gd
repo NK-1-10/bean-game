@@ -32,7 +32,7 @@ var need = ''
 var waterF = true ; var foodF = true; var attentionF = true
 
 func _ready() -> void:
-	damage.connect(takeDamage)
+	damage.connect(takeDamage) ; $merge.visible= false
 	$labels/e.visible = false
 	temp.visible = false
 	bar.visible = false
@@ -63,6 +63,7 @@ func grow(from):
 		$sounds/pending.play()
 		clickable = true
 		timer.stop()
+		$merge.visible = true
 	if from == 3: return
 	
 	plant.frame = from+1
@@ -73,13 +74,16 @@ func _on_lvl_up_pressed() -> void:
 	grow(cFrame)
 
 func fusionStart():
+	dead = true;$merge.visible = false
+	clickable = false
 	shoot.stop()
+	timer.stop()
+	progress.stop()
+	get_tree().current_scene.rebuild_blocks()
+	Signals.fuse.emit()
 	plant.play_backwards("default")
 	await plant.animation_finished
 	queue_free()
-	timer.stop()
-	Signals.fuse.emit()
-	#fuse() #--------------------------------------------------------------------when fuse script added
 
 func _on_area_2d_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT and clickable:
@@ -113,13 +117,13 @@ func _need(what):
 	elif what == "f":
 		temp.text = "Feed me"
 		need = "food"
-		if attentionF:
+		if foodF:
 			foodF = false
 			Signals.first.emit("food")
 	elif what == "w":
 		temp.text = "Water me"
 		need = "water"
-		if attentionF:
+		if waterF:
 			waterF = false
 			Signals.first.emit("water")
 
@@ -194,34 +198,32 @@ func takeDamage(damage): #------------------------------------------------------
 		death()
 
 func death():
-	print("plant died")
+	print("plant died") ; $merge.visible = false
 	$sounds/warn.play()
 	plant.play_backwards("default")
 	plant.frame = cFrame
-	await plant.animation_looped
+	await plant.animation_finished
 	dead = true
+	get_tree().current_scene.rebuild_blocks()
 	queue_free()
 
 func _on_shoot_timeout() -> void:
 	$sounds/tick.play()
-	var allEnemies = get_parent().enemyNode
 	var shortestDist = range
 	var enemy
-	
-	for child in allEnemies.get_children():
-		if child is not CharacterBody2D: pass
+
+	for child in get_tree().get_nodes_in_group("enemies"):
 		var dist = global_position.distance_to(child.global_position)
 		if dist < shortestDist:
 			enemy = child
 			shortestDist = dist
-	
+
 	if enemy is CharacterBody2D:
 		var s = seed_scene.instantiate()
 		s.damage = seedDamage
 		get_parent().get_parent().add_child(s)
 		s.global_position = global_position
 		s.direction = global_position.direction_to(enemy.global_position)
-
 
 var is_in_range = false
 

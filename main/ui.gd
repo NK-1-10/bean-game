@@ -124,3 +124,11 @@ func _attention():
 	await Global.typewriter(txt, label)
 	await get_tree().create_timer(5).timeout
 	move('out')
+	
+	
+	
+	
+var paused = false
+
+func _on_stop_pressed() -> void:
+	get_tree().paused = not get_tree().paused
