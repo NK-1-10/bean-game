@@ -18,9 +18,11 @@
 [ext_resource type="PackedScene" uid="uid://d32q8727ctxtk" path="res://main/screen.tscn" id="11_hlcqn"]
 [ext_resource type="Texture2D" uid="uid://b1eprghgr6qne" path="res://assets/Individual Icons/farm_6.png" id="11_ompsl"]
 [ext_resource type="Script" uid="uid://kwihgw0jjmkn" path="res://main/water.gd" id="14_bc3cr"]
-[ext_resource type="Script" uid="uid://d3ixmomuwbqty" path="res://main/spawn.gd" id="14_yyuar"]
+[ext_resource type="Script" path="res://main/spawn.gd" id="14_yyuar"]
 [ext_resource type="Texture2D" uid="uid://15p2o1pr5yeb" path="res://assets/Individual Icons/farm_19.png" id="15_0coyo"]
-[ext_resource type="Script" uid="uid://b0opm7nedr5ph" path="res://main/area_2d.gd" id="16_p6qvs"]
+[ext_resource type="Script" uid="uid://bwky6ldggclk7" path="res://main/variableContainer.gd" id="16_kpj3s"]
+[ext_resource type="Script" path="res://main/area_2d.gd" id="16_p6qvs"]
+[ext_resource type="PackedScene" uid="uid://b42xkyprhmfid" path="res://all/enemy_spawner.tscn" id="23_6gqxg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jc0vi"]
 texture = ExtResource("4_vfw6y")
@@ -8820,7 +8822,9 @@ position = Vector2(-1160, -642)
 
 [node name="squares" type="Node2D" parent="." unique_id=1854402732]
 
-[node name="plants" type="Node2D" parent="." unique_id=892623996]
+[node name="plants" type="Node2D" parent="." unique_id=892623996 node_paths=PackedStringArray("enemyNode")]
+script = ExtResource("16_kpj3s")
+enemyNode = NodePath("../enemySpawner")
 
 [node name="beanstock" parent="." unique_id=1277755266 instance=ExtResource("6_3qcir")]
 position = Vector2(-1562, -853)
@@ -8874,6 +8878,11 @@ script = ExtResource("16_p6qvs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="spawn/food/Area2D" unique_id=1041797551]
 shape = SubResource("CircleShape2D_0coyo")
+
+[node name="enemySpawner" parent="." unique_id=114839354 node_paths=PackedStringArray("plantsContainer") instance=ExtResource("23_6gqxg")]
+position = Vector2(521, 256)
+distFromCenter = 400
+plantsContainer = NodePath("../plants")
 
 [connection signal="input_event" from="ColorRect/hiverGreen" to="ColorRect/hiverGreen" method="_on_input_event"]
 [connection signal="mouse_entered" from="ColorRect/hiverGreen" to="ColorRect/hiverGreen" method="_on_mouse_entered"]

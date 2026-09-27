@@ -1,12 +1,14 @@
 [gd_scene format=3 uid="uid://4ulji6qkiuaq"]
 
-[ext_resource type="Script" path="res://all/coin.gd" id="1_hnarl"]
+[ext_resource type="Script" uid="uid://cnpiembrvuag4" path="res://all/coin.gd" id="1_hnarl"]
 [ext_resource type="Texture2D" uid="uid://c4cgm6m81o0pw" path="res://bugArt/coin-Sheet.png" id="1_i3lbq"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hnarl"]
 radius = 16.0
 
 [node name="coin" type="Area2D" unique_id=1544539443]
+z_index = 1
+scale = Vector2(0.5, 0.5)
 collision_layer = 256
 collision_mask = 256
 script = ExtResource("1_hnarl")
@@ -24,4 +26,5 @@ disabled = true
 wait_time = 0.07
 autostart = true
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="timeout" from="animTimer" to="." method="_on_anim_timer_timeout"]

@@ -33,7 +33,7 @@ func _ready() -> void:
 		newTimer.start()
 
 func targetClosestPlant() -> Node2D:
-	var chosenPlant
+	var chosenPlant = null
 	var distance = 9999999999
 	
 	while chosenPlant is not Node2D:
@@ -42,10 +42,11 @@ func targetClosestPlant() -> Node2D:
 			if dist < distance:
 				distance = dist
 				chosenPlant = child
-	
+		
 		if chosenPlant is not Node2D:
 			await get_tree().create_timer(3).timeout
 	
+	print(chosenPlant)
 	return chosenPlant
 
 func _physics_process(delta: float) -> void:
@@ -85,7 +86,7 @@ func takeDamage(amount):
 	if(health <= 0):
 		var newCoin = coinScene.instantiate()
 		newCoin.global_position = global_position
-		get_parent().add_child(newCoin)
+		get_parent().get_parent().add_child.call_deferred(newCoin)
 		
 		queue_free()
 	else:

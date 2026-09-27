@@ -11,8 +11,8 @@ var seed_scene = preload("res://seed.tscn")
 @onready var progress = $progress
 
 @export var hp = 50
-@export var seedDamage = 1
-@export var range = 50
+@export var seedDamage = 5
+@export var range = 150
 
 @export var first = 3
 @export var second =  1
@@ -180,7 +180,6 @@ func _on_progress_timeout() -> void:
 	clickable = false
 
 func takeDamage(damage): #--------------------------------------------------------------------damage and death
-	print(damage)
 	if dead: return
 	hp -= damage
 	if hp <= 0 :
@@ -195,13 +194,24 @@ func death():
 	dead = true
 	queue_free()
 
-
 func _on_shoot_timeout() -> void:
-	var s = seed_scene.instantiate()
-	s.damage = seedDamage
-	get_parent().add_child(s)
-	s.global_position = global_position
-	s.direction = (get_global_mouse_position() - global_position).normalized()
+	var allEnemies = get_parent().enemyNode
+	var shortestDist = range
+	var enemy
+	
+	for child in allEnemies.get_children():
+		if child is not CharacterBody2D: pass
+		var dist = global_position.distance_to(child.global_position)
+		if dist < shortestDist:
+			enemy = child
+			shortestDist = dist
+	
+	if enemy is CharacterBody2D:
+		var s = seed_scene.instantiate()
+		s.damage = seedDamage
+		get_parent().get_parent().add_child(s)
+		s.global_position = global_position
+		s.direction = global_position.direction_to(enemy.global_position)
 
 
 var is_in_range = false

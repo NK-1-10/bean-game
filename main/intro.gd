@@ -23,7 +23,7 @@ func _start():
 	await Global.typewriter(txt, place)
 	txt = "And above..the golden goose in the sky..."
 	await Global.typewriter(txt, place)
-	txt = "No time to waist! Let's get these ROOTS growing!"
+	txt = "No time to waste! Let's get these ROOTS growing!"
 	await Global.typewriter(txt, place)
 	await move("out")
 	var tween = create_tween()
