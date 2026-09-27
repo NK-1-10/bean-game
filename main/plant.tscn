@@ -5,6 +5,13 @@
 [ext_resource type="Texture2D" uid="uid://x60gye1kr82i" path="res://assets/two.png" id="2_damrn"]
 [ext_resource type="Texture2D" uid="uid://c6eismdumw47j" path="res://assets/three.png" id="3_ny1p5"]
 [ext_resource type="Texture2D" uid="uid://ba5v3ixt0vb2y" path="res://assets/four.PNG" id="4_damrn"]
+[ext_resource type="AudioStream" uid="uid://3lwb371m2rja" path="res://music/Sounds/Success.wav" id="6_1hqh0"]
+[ext_resource type="AudioStream" uid="uid://bq0ma2sp4lkgs" path="res://music/Sounds/Confirm.wav" id="7_74mai"]
+[ext_resource type="AudioStream" uid="uid://unbfii4mjdl" path="res://music/Sounds/Clicked_In.wav" id="8_j5lo3"]
+[ext_resource type="AudioStream" uid="uid://pe7n41gr0hss" path="res://music/Sounds/Clicked_Out.wav" id="9_fk1pg"]
+[ext_resource type="AudioStream" uid="uid://dxuf3r1sc5yhw" path="res://music/Sounds/Dialogue_Blip.wav" id="10_0l647"]
+[ext_resource type="AudioStream" uid="uid://di5hb133n2mls" path="res://music/Sounds/Menu_Open.wav" id="11_g51n1"]
+[ext_resource type="AudioStream" uid="uid://wc0ooif68gyc" path="res://music/Sounds/Warning.wav" id="12_74mai"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bouyv"]
 animations = [{
@@ -111,6 +118,48 @@ theme_override_font_sizes/font_size = 8
 text = "press e to
 interract"
 horizontal_alignment = 1
+
+[node name="sounds" type="Node2D" parent="." unique_id=1754087135]
+
+[node name="selected" type="AudioStreamPlayer2D" parent="sounds" unique_id=1155993908]
+stream = ExtResource("6_1hqh0")
+bus = &"sfx"
+
+[node name="pending" type="AudioStreamPlayer2D" parent="sounds" unique_id=1032950131]
+stream = ExtResource("7_74mai")
+bus = &"sfx"
+
+[node name="tick" type="AudioStreamPlayer2D" parent="sounds" unique_id=1026485232]
+stream = ExtResource("8_j5lo3")
+bus = &"sfx"
+
+[node name="settingsin" type="AudioStreamPlayer2D" parent="sounds" unique_id=81067363]
+stream = ExtResource("8_j5lo3")
+bus = &"sfx"
+
+[node name="settingsout" type="AudioStreamPlayer2D" parent="sounds" unique_id=2132560078]
+stream = ExtResource("9_fk1pg")
+bus = &"sfx"
+
+[node name="talk" type="AudioStreamPlayer2D" parent="sounds" unique_id=682127115]
+stream = ExtResource("10_0l647")
+bus = &"sfx"
+
+[node name="open" type="AudioStreamPlayer2D" parent="sounds" unique_id=1066027933]
+stream = ExtResource("8_j5lo3")
+bus = &"sfx"
+
+[node name="close" type="AudioStreamPlayer2D" parent="sounds" unique_id=944150712]
+stream = ExtResource("9_fk1pg")
+bus = &"sfx"
+
+[node name="appear" type="AudioStreamPlayer2D" parent="sounds" unique_id=905386311]
+stream = ExtResource("11_g51n1")
+bus = &"sfx"
+
+[node name="warn" type="AudioStreamPlayer2D" parent="sounds" unique_id=1382728584]
+stream = ExtResource("12_74mai")
+bus = &"sfx"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

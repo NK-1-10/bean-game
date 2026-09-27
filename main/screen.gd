@@ -18,14 +18,9 @@ func move():
 	if open:
 		$sounds/close.play()
 		tween.tween_property(panel, "position", off, 0.5)
-		open = false
-		if first: 
-			Signals.phone.emit()
-			first = false
 	else:
 		$sounds/open.play()
 		tween.tween_property(panel, "position", on, 0.5)
-		open = true
 
 func _on_button_pressed() -> void:
 	$sounds/close.play()

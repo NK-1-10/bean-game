@@ -55,9 +55,12 @@ func grow(from):
 	if from == 0:
 		shoot.wait_time = first
 		shoot.start()
+		$sounds/tick.play()
 	elif from == 1:
 		shoot.wait_time = second
+		$sounds/tick.play()
 	elif from == 2:
+		$sounds/pending.play()
 		clickable = true
 		timer.stop()
 	if from == 3: return
@@ -93,6 +96,7 @@ func _on_needs_timeout() -> void: #---------------------------------------------
 		n = "f" #food
 	else : n = "a" #attention
 	_need(n)
+	$sounds/talk.play()
 
 func _need(what): 
 	bar.visible = true
@@ -121,6 +125,7 @@ func _need(what):
 func fufillNeed(what):
 	if not has_need or what != need: return
 	if what != need: return
+	$sounds/selected.play()
 	progress.stop()
 	bar.visible = false
 	has_need = false
@@ -170,6 +175,7 @@ func _on_progress_timeout() -> void:
 	bar.visible = false
 	timer.start()
 	temp.visible = false
+	$sounds/warn.play()
 	if cFrame == 0: return
 	cFrame -= 1
 	plant.frame = cFrame
@@ -188,6 +194,7 @@ func takeDamage(damage): #------------------------------------------------------
 
 func death():
 	print("plant died")
+	$sounds/warn.play()
 	plant.play_backwards("default")
 	plant.frame = cFrame
 	await plant.animation_looped
@@ -195,6 +202,7 @@ func death():
 	queue_free()
 
 func _on_shoot_timeout() -> void:
+	$sounds/tick.play()
 	var allEnemies = get_parent().enemyNode
 	var shortestDist = range
 	var enemy

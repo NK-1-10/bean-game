@@ -6,23 +6,30 @@ extends CanvasLayer
 @onready var panel = $Panel
 @onready var label = $Panel/txt
 
-func _ready() -> void:
-	water.disabled = true; food.disabled = true; attention.disabled = true ; settings.disabled = true
-	Signals.first.connect(first) ; Signals.gameStart.connect(begin)
+@onready var p = $buttons/settings/Panel
 
-func begin():
-	settings.disabled = false
+
+
+func _ready() -> void:
+	Signals.first.connect(first) ;
 
 var settingsOpen = false ; var waterOpen = false; var foodOpen = false; var attentionOpen = false
+
+
+
+
+
+var ison = false
+
 func _on_settings_pressed() -> void:
-	if settingsOpen:
-		move('out')
-		$"../sounds/settingsout".play()
+	var tween = create_tween()
+	if ison:
+		tween.tween_property(p, "position", Vector2(-287, 86), 1)
+		ison = false
 	else:
-		move('in')
-		label.text = "SETTINGS"
-		water.disabled = true; food.disabled = true; attention.disabled = true
-		$"../sounds/settingsin".play()
+		tween.tween_property(p, "position", Vector2(-3, 86), 1)
+		ison = true
+	await tween.finished
 		
 func _on_water_pressed() -> void:
 	$"../sounds/tick".play()
@@ -110,6 +117,8 @@ func _food():
 	await Global.typewriter(txt, label)
 	await get_tree().create_timer(5).timeout
 	move('out')
+
+
 
 func _attention():
 	attention.visible = true

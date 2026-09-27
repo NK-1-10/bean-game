@@ -31,6 +31,7 @@ func _start():
 	waiting = true
 
 func move(w):
+	if Global.skip : return
 	var tween = create_tween()
 	if w == "in":
 		tween.tween_property(pan, "position", endPanel, 1)
@@ -59,9 +60,12 @@ func shake():
 	waiting = true
 	
 func emmit():
+	#Vector2(580, 412)
 	bean.visible = true
+	var location = stash.position
+	bean.position = location
 	var tween = create_tween()
-	tween.tween_property(bean, "position", Vector2(0, -394.12), 0.5)
+	tween.tween_property(bean, "position", Vector2(0, 394.12), 0.5)
 	await tween.finished
 	var tween2 = create_tween()
 	tween2.tween_property(stash, "position", Vector2(580, 850), 1)

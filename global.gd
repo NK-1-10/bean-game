@@ -4,6 +4,7 @@ var Squares = {}
 var slots_taken = 0
 var Current_slot = 0
 
+var skip = true
 
 var coins = 15
 var beanstalk_spot = 4
@@ -58,6 +59,8 @@ func can_place(id, item):
 
 var timer = 0.3
 func typewriter(string, label):
+	if skip : return
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	var text = ''
 	label.text = text
 	var s = str(string)
@@ -69,6 +72,7 @@ func typewriter(string, label):
 		text = text + s[n]
 		label.text = text
 		await get_tree().create_timer(timer).timeout
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 
 var inventory = {}
 

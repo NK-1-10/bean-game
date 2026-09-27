@@ -92,6 +92,7 @@ var startPanel = Vector2(-241, 174)
 var endPanel = Vector2(57, 174)
 
 func move(w):
+	if Global.skip : return
 	var tween = create_tween()
 	if w == "in":
 		$sounds/open.play()

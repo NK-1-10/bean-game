@@ -12,6 +12,29 @@
 [ext_resource type="AudioStream" uid="uid://buv4clgk4oivv" path="res://music/Sounds/Sell.wav" id="11_atqki"]
 [ext_resource type="AudioStream" uid="uid://wc0ooif68gyc" path="res://music/Sounds/Warning.wav" id="12_atqki"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_if4hr"]
+bg_color = Color(0.79607844, 0.62352943, 0.5764706, 0.19607843)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_atqki"]
+bg_color = Color(0.5390257, 0.6629371, 0.5342911, 0.39215687)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yugls"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.49019608, 0.09803922, 0.09803922, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qkmle"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 1
+border_color = Color(0.49019608, 0.09803922, 0.09803922, 1)
+
 [node name="screen" type="CanvasLayer" unique_id=1729791209]
 script = ExtResource("1_bdea5")
 
@@ -23,6 +46,7 @@ anchor_bottom = 1.0
 offset_left = -453.0
 grow_horizontal = 0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_if4hr")
 
 [node name="Label" type="Label" parent="Panel" unique_id=53702581]
 layout_mode = 1
@@ -30,11 +54,12 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -133.5
-offset_top = 18.0
+offset_top = 30.0
 offset_right = 133.5
-offset_bottom = 87.0
+offset_bottom = 99.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 50
+theme_override_colors/font_color = Color(0.49019608, 0.09803922, 0.09803922, 1)
+theme_override_font_sizes/font_size = 100
 text = "Bean Stock"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=350251963]
@@ -49,6 +74,7 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="Panel/VBoxContainer" unique_id=690456179]
 custom_minimum_size = Vector2(0, 200)
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_atqki")
 
 [node name="Bean" type="Sprite2D" parent="Panel/VBoxContainer/Panel" unique_id=2057098064]
 position = Vector2(60, 74)
@@ -61,25 +87,30 @@ offset_left = 117.0
 offset_top = 15.0
 offset_right = 362.0
 offset_bottom = 152.0
+theme_override_colors/font_color = Color(0.49019608, 0.09803922, 0.09803922, 1)
 theme_override_font_sizes/font_size = 50
 text = "Bean x1"
 
 [node name="Label" type="Label" parent="Panel/VBoxContainer/Panel/Label" unique_id=730832879]
 layout_mode = 0
 offset_left = 5.0000305
-offset_top = 58.0
+offset_top = 46.0
 offset_right = 250.00003
-offset_bottom = 195.0
+offset_bottom = 183.0
+theme_override_colors/font_color = Color(0.49019608, 0.09803922, 0.09803922, 1)
 theme_override_font_sizes/font_size = 30
 text = "Price : 15"
 
 [node name="one" type="Button" parent="Panel/VBoxContainer/Panel" unique_id=252501002]
 layout_mode = 0
-offset_left = 278.0
-offset_top = 86.0
-offset_right = 428.0
-offset_bottom = 177.30511
+offset_left = 270.0
+offset_top = 77.0
+offset_right = 420.0
+offset_bottom = 168.30511
+theme_override_colors/font_color = Color(0.49019608, 0.09803922, 0.09803922, 1)
+theme_override_colors/font_hover_color = Color(0.9490196, 0.5568628, 0.53333336, 1)
 theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_yugls")
 text = "Buy"
 
 [node name="Button" type="Button" parent="Panel" unique_id=693535802]
@@ -88,9 +119,13 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -70.0
+offset_top = -163.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_colors/font_color = Color(0.49019608, 0.09803922, 0.09803922, 1)
+theme_override_colors/font_hover_color = Color(0.8980392, 0.3019608, 0.27058825, 1)
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxFlat_qkmle")
 text = "Exit"
 
 [node name="warning" type="Label" parent="." unique_id=924156311]
