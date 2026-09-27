@@ -6,6 +6,7 @@ var Current_slot = 0
 
 var coins = 15
 var beanstalk_spot = 4
+var character = ""
 
 var rows = 5
 var columns = 8

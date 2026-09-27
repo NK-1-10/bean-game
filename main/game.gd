@@ -12,7 +12,11 @@ var offset = 16*2
 
 var selected = 0
 
+var character = "Elf"
 func _ready() -> void:
+	if Global.character != "":
+		character = Global.character
+	print(Global.character)
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	Signals.start_end.connect(_add_bean) ; Signals.bean_planted.connect(_planted_bean) ; Signals.phone.connect(_opened_phone) ; Signals.updateCoins.connect(update_coins)
 	$beanstock.position = Vector2(-1028,-700) ; $UI/Phone.position = Vector2(1244, 136) ; Signals.pickUp.connect(inventoryChange)
@@ -94,15 +98,48 @@ func move(w):
 	await tween.finished
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+var movement = {
+	"Elf":{
+		"idle":"elf idle",
+		"walk forward": "elf walk forward"
+	},
+	"Maid":{
+		"idle":"maid idle",
+		"walk forward": "maid walk forward"
+	},
+	"Frog":{
+		"idle":"frog idle",
+		"walk forward": "frog walk forward"
+	},
+	"Pumpkin":{
+		"idle":"pumpkin idle",
+		"walk forward": "pumpkin walk forward"
+	},
+}
+
 func play_intro():
 	camera.make_current()
 	player.set_physics_process(false) 
 	player.position = Vector2(521, 470)
-	$player/AnimatedSprite2D.play("elf walk forward")
+	$player/AnimatedSprite2D.play(movement[character]["walk forward"])
 	var tween = create_tween()
 	tween.tween_property(player, "position", Vector2(521, 256), 3)
 	await tween.finished
-	$player/AnimatedSprite2D.play("elf idle")
+	$player/AnimatedSprite2D.play(movement[character]["idle"])
 	Signals.start_start.emit()
 	#player.set_physics_process(true) 
 	

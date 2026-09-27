@@ -10,6 +10,7 @@ var middles = [
 	preload("res://assets/middle4.PNG"),
 ]
 var ammount
+@export var needed = 40
 
 var stack = 0  
 var offset = -32
@@ -27,7 +28,11 @@ func chunks():
 	new_middle.texture = middles[roll]
 	new_middle.position = Vector2(0, stack*offset)
 	middle.add_child(new_middle)
-	
+	if stack == needed: 
+		win()
+
+func win():
+	Fade.change_scene("res://ending.tscn")
 
 func _on_button_pressed() -> void:
 	chunks()

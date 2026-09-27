@@ -1,0 +1,64 @@
+[gd_scene format=3 uid="uid://bqxsrcslbp0do"]
+
+[ext_resource type="Script" uid="uid://d0mm8sv4flq7k" path="res://main.gd" id="1_ig7tw"]
+
+[sub_resource type="Gradient" id="Gradient_7dm0k"]
+colors = PackedColorArray(0.58431375, 0.6862745, 0.41960785, 1, 0.58431375, 0.6862745, 0.41960785, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ig7tw"]
+gradient = SubResource("Gradient_7dm0k")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ig7tw"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_top = 1
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7dm0k"]
+bg_color = Color(0.24717897, 0.3264432, 0.18835184, 0.39215687)
+border_width_top = 1
+border_color = Color(0, 0, 0, 1)
+
+[node name="main" type="CanvasLayer" unique_id=729372908]
+script = ExtResource("1_ig7tw")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=2083735633]
+custom_minimum_size = Vector2(0, 300)
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 458.0
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_ig7tw")
+
+[node name="Label" type="Label" parent="." unique_id=1909927716]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 60.0
+offset_bottom = -25.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 130
+text = "Game name"
+horizontal_alignment = 1
+
+[node name="start" type="Button" parent="." unique_id=2091753234]
+offset_left = 55.0
+offset_top = 228.0
+offset_right = 316.0
+offset_bottom = 283.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ig7tw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7dm0k")
+text = "Start game"
+
+[node name="settings" type="Button" parent="." unique_id=1907363650]
+offset_left = 55.0
+offset_top = 298.0
+offset_right = 316.0
+offset_bottom = 353.0
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_ig7tw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7dm0k")
+text = "Settings"
+
+[connection signal="pressed" from="start" to="." method="_on_start_pressed"]

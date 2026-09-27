@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 Global="*uid://ba7i3iytcvrhg"
 Signals="*uid://dt0ryd5hoybe"
 Coins="*uid://b66lieu36f53n"
+Fade="*uid://d3cawhjkft4e3"
 
 [display]
 
@@ -30,6 +31,10 @@ window/stretch/mode="canvas_items"
 paper=""
 plastic=""
 metal=""
+
+[gui]
+
+theme/custom_font="uid://doflh3g5ckyws"
 
 [input]
 

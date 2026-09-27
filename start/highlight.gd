@@ -4,10 +4,10 @@ extends Node2D
 
 var paint = Color.WHITE
 
-var maid = Vector2(22, 152)
-var pumpkin = Vector2(322, 152)
-var elf = Vector2(622, 152)
-var frog = Vector2(922, 152)
+var maid = Vector2(22, 0)
+var pumpkin = Vector2(322, 0)
+var elf = Vector2(622, 0)
+var frog = Vector2(922, 0)
 var target
 var selected = false
 var current
@@ -120,22 +120,31 @@ func _on_start_pressed() -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	var sprite ; var one; var two ; var three
 	var four; var five ; var six
+	var l; var t
 	if current == "Maid":
 		sprite = maid1
 		one = eoverlay; two = foverlay; three = poverlay
 		four = elf1; five = frog1; six = pump
+		l = $"../HBoxContainer/maid"
+		t=mtxt
 	elif current == "Elf":
+		t=etxt
 		sprite = elf1
 		four = maid1; five = frog1; six = pump
 		one = moverlay; two = foverlay; three = poverlay
+		l = $"../HBoxContainer/elf"
 	elif current == "Frog":
+		t=ftxt
 		sprite = frog1
 		four = elf1; five = maid1; six = pump
 		one = eoverlay; two = moverlay; three = poverlay
+		l = $"../HBoxContainer/frog"
 	else:
 		sprite = pump
+		t=ptxt
 		four = elf1; five = frog1; six = maid1
 		one = eoverlay; two = foverlay; three = moverlay
+		l = $"../HBoxContainer/pumpkin"
 	sprite.play('idle')
 	one.play('back') ; two.play('back') ; three.play('back') 
 	four.play('back') ; five.play('back') ; six.play('back') 
@@ -146,15 +155,32 @@ func _on_start_pressed() -> void:
 	tween.tween_property(four, "scale", Vector2(0.5, 0.5), 1.5)
 	tween.tween_property(five, "scale", Vector2(0.5, 0.5), 1.5)
 	tween.tween_property(six, "scale", Vector2(0.5, 0.5), 1.5)
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	await tween.finished
-	Signals.selected.emmit(current)
+	await iris_close(l.get_global_rect().get_center())
+	end(t, current)
+	
+
+func end(txt, who):
+	Global.character = who
+
+var s=-115
+var e=1155
+var mtxt = "No bug is too mess-y for me."
+var etxt = "Leaf it to me!"
+var ftxt = "Let's hop right into it"
+var ptxt = "Ready to patch it up."
 
 
-
-
-
-
+@onready var iris = $"../transition/ColorRect".material
+func iris_close(target_pos: Vector2):
+	var screen = get_viewport_rect().size
+	iris.set_shader_parameter("screen_size", screen)
+	iris.set_shader_parameter("center", target_pos)
+	var tween = create_tween()
+	tween.tween_method(func(r): iris.set_shader_parameter("radius", r), screen.length(), 0.0, 1.0)
+	await tween.finished
+	Fade.change_scene("res://main/game.tscn")
 
 
 

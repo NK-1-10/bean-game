@@ -18,10 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://d32q8727ctxtk" path="res://main/screen.tscn" id="11_hlcqn"]
 [ext_resource type="Texture2D" uid="uid://b1eprghgr6qne" path="res://assets/Individual Icons/farm_6.png" id="11_ompsl"]
 [ext_resource type="Script" uid="uid://kwihgw0jjmkn" path="res://main/water.gd" id="14_bc3cr"]
-[ext_resource type="Script" path="res://main/spawn.gd" id="14_yyuar"]
+[ext_resource type="Script" uid="uid://d3ixmomuwbqty" path="res://main/spawn.gd" id="14_yyuar"]
 [ext_resource type="Texture2D" uid="uid://15p2o1pr5yeb" path="res://assets/Individual Icons/farm_19.png" id="15_0coyo"]
 [ext_resource type="Script" uid="uid://bwky6ldggclk7" path="res://main/variableContainer.gd" id="16_kpj3s"]
-[ext_resource type="Script" path="res://main/area_2d.gd" id="16_p6qvs"]
+[ext_resource type="Script" uid="uid://b0opm7nedr5ph" path="res://main/area_2d.gd" id="16_p6qvs"]
 [ext_resource type="PackedScene" uid="uid://b42xkyprhmfid" path="res://all/enemy_spawner.tscn" id="23_6gqxg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jc0vi"]
