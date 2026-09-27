@@ -28,7 +28,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("4_damrn")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -55,6 +55,7 @@ wait_time = 4.0
 wait_time = 4.0
 
 [node name="Label" type="Label" parent="." unique_id=2062924363]
+z_index = 3
 offset_left = -36.0
 offset_top = -38.0
 offset_right = 36.0
@@ -64,12 +65,15 @@ text = "plant"
 horizontal_alignment = 1
 
 [node name="lvl up" type="Button" parent="." unique_id=1849418608]
+visible = false
+z_index = 3
 offset_left = -30.0
 offset_top = -4.0
 offset_right = -22.0
 offset_bottom = 4.0
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=2063739109]
+z_index = 3
 offset_left = -18.0
 offset_top = -25.0
 offset_right = 17.0
@@ -81,6 +85,7 @@ show_percentage = false
 wait_time = 60.0
 
 [node name="buttons" type="Node2D" parent="." unique_id=1108906472]
+visible = false
 position = Vector2(9, 0)
 
 [node name="w" type="Button" parent="buttons" unique_id=1783554731]
@@ -108,8 +113,10 @@ theme_override_font_sizes/font_size = 10
 text = "attention"
 
 [node name="labels" type="Node2D" parent="." unique_id=1910037192]
+visible = false
 
 [node name="e" type="Label" parent="labels" unique_id=598811303]
+z_index = 2
 offset_left = -22.0
 offset_top = -15.0
 offset_right = 21.0
@@ -160,6 +167,15 @@ bus = &"sfx"
 [node name="warn" type="AudioStreamPlayer2D" parent="sounds" unique_id=1382728584]
 stream = ExtResource("12_74mai")
 bus = &"sfx"
+
+[node name="Label2" type="Label" parent="." unique_id=1682551716]
+offset_left = -28.0
+offset_top = 3.0
+offset_right = 34.0
+offset_bottom = 26.0
+theme_override_colors/font_color = Color(0.9253918, 0.91592395, 7.70092e-07, 1)
+theme_override_font_sizes/font_size = 10
+text = "click to fuse"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

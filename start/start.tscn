@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://clgxjl46qs5c6" path="res://start/highlight.gd" id="6_hqiu3"]
 [ext_resource type="Gradient" uid="uid://bx7ccfm0k00vg" path="res://gradients/basic.tres" id="6_masxb"]
 [ext_resource type="Shader" uid="uid://chpihmymwogrb" path="res://start/start.gdshader" id="7_masxb"]
-[ext_resource type="AudioStream" uid="uid://yj73sem27yv5" path="res://music/one.mp3" id="8_ebhx0"]
+[ext_resource type="AudioStream" uid="uid://bep0i1wr3fxuq" path="res://music/soud.mp3" id="8_wx30y"]
 [ext_resource type="AudioStream" uid="uid://3lwb371m2rja" path="res://music/Sounds/Success.wav" id="9_3ssna"]
 [ext_resource type="AudioStream" uid="uid://bq0ma2sp4lkgs" path="res://music/Sounds/Confirm.wav" id="10_wx30y"]
 [ext_resource type="AudioStream" uid="uid://unbfii4mjdl" path="res://music/Sounds/Clicked_In.wav" id="11_wx30y"]
@@ -531,7 +531,7 @@ color = Color(0.5019608, 0.5176471, 0.28627452, 1)
 [node name="sound" type="Node2D" parent="." unique_id=1135957715]
 
 [node name="background" type="AudioStreamPlayer2D" parent="sound" unique_id=308113931]
-stream = ExtResource("8_ebhx0")
+stream = ExtResource("8_wx30y")
 autoplay = true
 bus = &"music"
 

@@ -27,6 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://unbfii4mjdl" path="res://music/Sounds/Clicked_In.wav" id="27_811gj"]
 [ext_resource type="AudioStream" uid="uid://pe7n41gr0hss" path="res://music/Sounds/Clicked_Out.wav" id="28_ygnxu"]
 [ext_resource type="AudioStream" uid="uid://dxuf3r1sc5yhw" path="res://music/Sounds/Dialogue_Blip.wav" id="29_811gj"]
+[ext_resource type="AudioStream" uid="uid://jjmam1v5of5g" path="res://music/Sounds/Currency.wav" id="29_dfc64"]
 [ext_resource type="AudioStream" uid="uid://di5hb133n2mls" path="res://music/Sounds/Menu_Open.wav" id="30_811gj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jc0vi"]
@@ -8830,6 +8831,7 @@ text = "Music Volume"
 
 [node name="music" type="HSlider" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=781790787]
 layout_mode = 2
+focus_mode = 0
 
 [node name="Label" type="Label" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=1374404216]
 layout_mode = 2
@@ -8837,11 +8839,12 @@ text = "SFX Volume"
 
 [node name="sfx" type="HSlider" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=805955092]
 layout_mode = 2
+focus_mode = 0
 
 [node name="txt" type="CheckBox" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=1385617889]
 layout_mode = 2
 tooltip_text = "Disabeling text works as a dialog skipper. That includes the tutorial."
-text = "text"
+text = "Skip text"
 
 [node name="fullscreen" type="CheckBox" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=2057476311]
 layout_mode = 2
@@ -8956,6 +8959,10 @@ bus = &"sfx"
 
 [node name="appear" type="AudioStreamPlayer2D" parent="sounds" unique_id=734339916]
 stream = ExtResource("30_811gj")
+bus = &"sfx"
+
+[node name="coin add" type="AudioStreamPlayer2D" parent="sounds" unique_id=285372753]
+stream = ExtResource("29_dfc64")
 bus = &"sfx"
 
 [connection signal="input_event" from="ColorRect/hiverGreen" to="ColorRect/hiverGreen" method="_on_input_event"]

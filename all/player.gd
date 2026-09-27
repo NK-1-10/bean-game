@@ -1,5 +1,6 @@
 extends CharacterBody2D
 @onready var player = $AnimatedSprite2D
+@onready var walk = $sound/Walk
 
 const SPEED = 150.0
 
@@ -55,12 +56,15 @@ func _physics_process(delta: float) -> void:
 			facing = "side"
 			player.flip_h = direction.x < 0
 			player.play(movement[character]["walk"])
+			walk.play()
 		elif direction.y < 0:
 			facing = "back"
 			player.play(movement[character]["walk forward"])
+			walk.play()
 		else:
 			facing = "front"
 			player.play(movement[character]["walk back"])
+			walk.play()
 		velocity = direction * SPEED
 	else:
 		if facing == "side":

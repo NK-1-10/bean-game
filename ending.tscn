@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://5xclpx15a55t"]
 
 [ext_resource type="Script" uid="uid://bujarmtemffkl" path="res://ending.gd" id="1_fsb5k"]
-[ext_resource type="AudioStream" uid="uid://yj73sem27yv5" path="res://music/one.mp3" id="2_dmh3q"]
+[ext_resource type="AudioStream" uid="uid://bep0i1wr3fxuq" path="res://music/soud.mp3" id="2_dmh3q"]
 
 [sub_resource type="Gradient" id="Gradient_fsb5k"]
 colors = PackedColorArray(0.22352941, 0.3372549, 0.45882353, 1, 0.8117647, 0.7607843, 0.8156863, 1)

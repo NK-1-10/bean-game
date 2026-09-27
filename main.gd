@@ -42,7 +42,7 @@ func _on_sfx_value_changed(value: float) -> void:
 	$tick.play()
 
 func _on_txt_toggled(toggled_on: bool) -> void:
-	Global.skip = not toggled_on
+	Global.skip = toggled_on
 	$tick.play()
 
 func _on_fullscreen_toggled(toggled_on: bool) -> void:

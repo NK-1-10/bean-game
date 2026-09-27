@@ -64,6 +64,7 @@ func _add_bean():
 	await Global.typewriter(txt, label)
 
 func update_coins(txt):
+	$"sounds/coin add".play()
 	$UI/buttons/Coin.text = txt
 
 func _planted_bean():
@@ -272,7 +273,7 @@ func _on_sfx_value_changed(value: float) -> void:
 	$sounds/tick.play()
 
 func _on_txt_toggled(toggled_on: bool) -> void:
-	Global.skip = not toggled_on
+	Global.skip = toggled_on
 	$sounds/tick.play()
 
 func _on_fullscreen_toggled(toggled_on: bool) -> void:

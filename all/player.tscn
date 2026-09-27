@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bl54n553sntfa" path="res://asset character/maid.png" id="3_7nenw"]
 [ext_resource type="Texture2D" uid="uid://d0wwn20g4keon" path="res://asset character/frog_adventurer.png" id="3_vmglh"]
 [ext_resource type="Texture2D" uid="uid://cdoeuc4n7hyu6" path="res://asset character/pumpkin_man.png" id="5_725fp"]
+[ext_resource type="AudioStream" uid="uid://cj5qnjh6n23hb" path="res://music/walk.mp3" id="6_725fp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ptn6"]
 atlas = ExtResource("1_h2rrn")
@@ -826,3 +827,8 @@ collision_mask = 256
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D" unique_id=184026895]
 position = Vector2(-1, 3)
 shape = SubResource("CapsuleShape2D_n4lx4")
+
+[node name="sound" type="Node2D" parent="." unique_id=1857915423]
+
+[node name="Walk" type="AudioStreamPlayer2D" parent="sound" unique_id=755964966]
+stream = ExtResource("6_725fp")

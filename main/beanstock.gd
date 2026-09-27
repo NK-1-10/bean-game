@@ -17,6 +17,7 @@ var stack = 0
 var offset = -32
 
 func _ready() -> void:
+	Signals.fuse.connect(chunks)
 	ammount = middles.size()
 	top.position = Vector2(0, offset)
 
@@ -31,6 +32,8 @@ func chunks():
 	middle.add_child(new_middle)
 	if stack == needed: 
 		win()
+
+
 
 func win():
 	Fade.change_scene("res://ending.tscn")
