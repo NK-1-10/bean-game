@@ -12,8 +12,17 @@ var offset = 16*2
 
 var selected = 0
 
+@onready var music = $UI/buttons/settings/Panel/VBoxContainer/music
+@onready var sfx = $UI/buttons/settings/Panel/VBoxContainer/sfx
+@onready var t = $UI/buttons/settings/Panel/VBoxContainer/txt
+@onready var window = $UI/buttons/settings/Panel/VBoxContainer/fullscreen
+
 var character = "Elf"
 func _ready() -> void:
+	music.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("music")))
+	sfx.value = db_to_linear(AudioServer.get_bus_volume_db(AudioServer.get_bus_index("sfx")))
+	window.button_pressed = DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN
+	t.button_pressed = not Global.skip
 	if Global.character != "":
 		character = Global.character
 	print(Global.character)
@@ -242,8 +251,33 @@ func _unhandled_input(event: InputEvent) -> void:
 	elif event.is_action_pressed("clear"):
 		select_slot(0)
 
-
-
 func _on_slot_input(event: InputEvent, index: int) -> void:
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		select_slot(index)
+
+
+
+
+
+
+func set_bus(bus_name, value):
+	AudioServer.set_bus_volume_db(AudioServer.get_bus_index(bus_name), linear_to_db(value))
+
+func _on_music_value_changed(value: float) -> void:
+	set_bus("music", value)
+	$sounds/tick.play()
+
+func _on_sfx_value_changed(value: float) -> void:
+	set_bus("sfx", value)
+	$sounds/tick.play()
+
+func _on_txt_toggled(toggled_on: bool) -> void:
+	Global.skip = not toggled_on
+	$sounds/tick.play()
+
+func _on_fullscreen_toggled(toggled_on: bool) -> void:
+	$sounds/tick.play()
+	if toggled_on:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
+	else:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)

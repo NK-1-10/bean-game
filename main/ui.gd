@@ -15,13 +15,10 @@ func _ready() -> void:
 
 var settingsOpen = false ; var waterOpen = false; var foodOpen = false; var attentionOpen = false
 
-
-
-
-
 var ison = false
 
 func _on_settings_pressed() -> void:
+	$"../sounds/tick".play()
 	var tween = create_tween()
 	if ison:
 		tween.tween_property(p, "position", Vector2(-287, 86), 1)

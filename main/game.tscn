@@ -8816,21 +8816,36 @@ offset_right = -87.0
 offset_bottom = 358.0
 grow_vertical = 2
 
-[node name="txt" type="Label" parent="UI/buttons/settings/Panel" unique_id=463837773]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -86.0
-offset_top = -138.0
-offset_right = 86.0
-offset_bottom = 139.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 25
-autowrap_mode = 3
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/buttons/settings/Panel" unique_id=1504996572]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 36.0
+offset_right = 182.0
+offset_bottom = 271.0
+theme_override_constants/separation = 10
+
+[node name="label" type="Label" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=748110211]
+layout_mode = 2
+text = "Music Volume"
+
+[node name="music" type="HSlider" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=781790787]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=1374404216]
+layout_mode = 2
+text = "SFX Volume"
+
+[node name="sfx" type="HSlider" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=805955092]
+layout_mode = 2
+
+[node name="txt" type="CheckBox" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=1385617889]
+layout_mode = 2
+tooltip_text = "Disabeling text works as a dialog skipper. That includes the tutorial."
+text = "text"
+
+[node name="fullscreen" type="CheckBox" parent="UI/buttons/settings/Panel/VBoxContainer" unique_id=2057476311]
+layout_mode = 2
+text = "Fullscreen"
 
 [node name="plant" parent="." unique_id=352524241 instance=ExtResource("5_vfw6y")]
 position = Vector2(-1160, -642)
@@ -8949,6 +8964,10 @@ bus = &"sfx"
 [connection signal="input_event" from="UI/Bag/Area2D" to="intro" method="_on_area_2d_input_event"]
 [connection signal="input_event" from="UI/Phone/Area2D" to="screen" method="_on_area_2d_input_event"]
 [connection signal="pressed" from="UI/buttons/settings" to="UI" method="_on_settings_pressed"]
+[connection signal="value_changed" from="UI/buttons/settings/Panel/VBoxContainer/music" to="." method="_on_music_value_changed"]
+[connection signal="value_changed" from="UI/buttons/settings/Panel/VBoxContainer/sfx" to="." method="_on_sfx_value_changed"]
+[connection signal="toggled" from="UI/buttons/settings/Panel/VBoxContainer/txt" to="." method="_on_txt_toggled"]
+[connection signal="toggled" from="UI/buttons/settings/Panel/VBoxContainer/fullscreen" to="." method="_on_fullscreen_toggled"]
 [connection signal="body_entered" from="water" to="water" method="_on_body_entered"]
 [connection signal="body_exited" from="water" to="water" method="_on_body_exited"]
 [connection signal="timeout" from="spawn/Timer" to="spawn" method="_on_timer_timeout"]
