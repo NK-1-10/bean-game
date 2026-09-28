@@ -50,8 +50,10 @@ func _ready() -> void:
 				"column": n,
 				"can_plant": true
 			}
-	play_intro()
-	#inventoryChange("plant", 1)
+	#play_intro()
+	inventoryChange("plant", 1)
+	inventoryChange("wateringcan", 1)
+	inventoryChange("food", 1)
 	#$player/Camera2D.make_current()
 
 var txt = ''
@@ -202,6 +204,7 @@ func updateInvent(index):
 	else:
 		slot.get_node("TextureRect").texture = null
 		slot.get_node("amount").text = ""
+	Signals.inventory_slot.emit(Global.Current_slot)
 
 func use_item(index):
 	var key = str(index)
@@ -232,6 +235,7 @@ func select_slot(index):
 		selected = 0
 		Global.Current_slot = 0
 		$squares.visible = false
+		Signals.inventory_slot.emit(0)
 		return
 	if index < 1 or index > box.get_child_count():
 		return
@@ -240,6 +244,7 @@ func select_slot(index):
 	box.get_child(index - 1).get_node("overlay").visible = true
 	selected = index
 	Global.Current_slot = selected
+	Signals.inventory_slot.emit(index)
 	if is_it_plant(index):
 		$squares.visible = true
 		refresh_grid()

@@ -6,6 +6,10 @@
 [ext_resource type="Texture2D" uid="uid://d0wwn20g4keon" path="res://asset character/frog_adventurer.png" id="3_vmglh"]
 [ext_resource type="Texture2D" uid="uid://cdoeuc4n7hyu6" path="res://asset character/pumpkin_man.png" id="5_725fp"]
 [ext_resource type="AudioStream" uid="uid://cj5qnjh6n23hb" path="res://music/walk.mp3" id="6_725fp"]
+[ext_resource type="Texture2D" uid="uid://cxl2bpdg5b1te" path="res://assets/needs/food.PNG" id="7_5nwtp"]
+[ext_resource type="Script" uid="uid://b5vtqgykfownd" path="res://all/items.gd" id="7_ar4ew"]
+[ext_resource type="Texture2D" uid="uid://cfaifpjish8vy" path="res://assets/needs/canwwater.PNG" id="8_4camn"]
+[ext_resource type="Texture2D" uid="uid://bcdckf33vouvd" path="res://assets/needs/can.PNG" id="9_ar4ew"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ptn6"]
 atlas = ExtResource("1_h2rrn")
@@ -810,14 +814,14 @@ script = ExtResource("1_6ptn6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1672969927]
 sprite_frames = SubResource("SpriteFrames_vk3e1")
-animation = &"frog walk forward"
+animation = &"elf idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=898341656]
 position = Vector2(-1, 3)
 shape = SubResource("CapsuleShape2D_n4lx4")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=347551486]
-zoom = Vector2(2.5, 2.5)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 
 [node name="Area2D" type="Area2D" parent="." unique_id=61957748]
@@ -832,3 +836,21 @@ shape = SubResource("CapsuleShape2D_n4lx4")
 
 [node name="Walk" type="AudioStreamPlayer2D" parent="sound" unique_id=755964966]
 stream = ExtResource("6_725fp")
+
+[node name="items" type="Node2D" parent="." unique_id=491737040]
+script = ExtResource("7_ar4ew")
+
+[node name="food" type="Sprite2D" parent="items" unique_id=384083913]
+position = Vector2(-1, -9)
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_5nwtp")
+
+[node name="water" type="Sprite2D" parent="items" unique_id=770911068]
+position = Vector2(0.40000007, -9.599999)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_4camn")
+
+[node name="can" type="Sprite2D" parent="items" unique_id=1659721540]
+position = Vector2(0.99999994, -13)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("9_ar4ew")

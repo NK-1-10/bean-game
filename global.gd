@@ -15,8 +15,6 @@ var columns = 8
 
 var beanstalk_planted = false
 
-
-
 func block_around(id, radius = 1):
 	var row = Squares[id]["row"]
 	var col = Squares[id]["column"]
@@ -104,19 +102,19 @@ var Collectables ={
 	"water":{
 		"plantable" : false,
 		"stackable" : false,
-		"visual": "res://assets/Individual Icons/farm_4.png",
+		"visual": "res://assets/needs/canwwater.PNG",
 		"throwable" : false
 	},
 	"food":{
 		"plantable" : false,
 		"stackable" : true,
-		"visual": "res://assets/Individual Icons/farm_19.png",
+		"visual": "res://assets/needs/food.PNG",
 		"throwable" : true
 	},
 	"wateringcan":{
 		"plantable" : false,
 		"stackable" : false,
-		"visual": "res://assets/Individual Icons/farm_2.png",
+		"visual": "res://assets/needs/can.PNG",
 		"throwable" : false
 	},
 }

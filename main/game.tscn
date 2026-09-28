@@ -17,8 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://d32q8727ctxtk" path="res://main/screen.tscn" id="11_hlcqn"]
 [ext_resource type="Script" uid="uid://kwihgw0jjmkn" path="res://main/water.gd" id="14_bc3cr"]
 [ext_resource type="Script" uid="uid://d3ixmomuwbqty" path="res://main/spawn.gd" id="14_yyuar"]
-[ext_resource type="Texture2D" uid="uid://15p2o1pr5yeb" path="res://assets/Individual Icons/farm_19.png" id="15_0coyo"]
 [ext_resource type="Script" uid="uid://b0opm7nedr5ph" path="res://main/area_2d.gd" id="16_p6qvs"]
+[ext_resource type="Texture2D" uid="uid://cxl2bpdg5b1te" path="res://assets/needs/food.PNG" id="18_ygnxu"]
 [ext_resource type="PackedScene" uid="uid://b42xkyprhmfid" path="res://all/enemy_spawner.tscn" id="23_6gqxg"]
 [ext_resource type="AudioStream" uid="uid://yj73sem27yv5" path="res://music/one.mp3" id="24_d2f2p"]
 [ext_resource type="AudioStream" uid="uid://3lwb371m2rja" path="res://music/Sounds/Success.wav" id="25_ygnxu"]
@@ -8919,7 +8919,7 @@ wait_time = 6.0
 [node name="food" type="Sprite2D" parent="spawn" unique_id=325678617]
 position = Vector2(-608, -92)
 scale = Vector2(0.5, 0.5)
-texture = ExtResource("15_0coyo")
+texture = ExtResource("18_ygnxu")
 
 [node name="Area2D" type="Area2D" parent="spawn/food" unique_id=39204881]
 script = ExtResource("16_p6qvs")
